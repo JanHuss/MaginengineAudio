@@ -7,9 +7,58 @@ EventManager::EventManager()
 
 EventManager::~EventManager()
 {
+	delete tree;
+	delete bigWave_Event;
+	delete bigWave_FullSound_Track;
+	delete laserGun_Event;
+	delete laserGun_Charge_Track;
+	delete laserGun_Trigger_Track;
+	delete laserGun_Release_Track;
+	delete footsteps_wood_Event;
+	delete footsteps_wood_Track1;
+	delete footsteps_wood_Track2; 
+	delete footsteps_wood_Track3;
+	delete footsteps_wood_Track4;
+	delete footsteps_wood_Track5;
 }
 
 void EventManager::init()
 {
-	//std::cout << "EventManager -> init() called()" << std::endl;
+	std::cout << "EventManager -> init() called()" << std::endl;
+
+	// initialising the Engine's hierarchy. Making use of the 
+	// composite pattern
+	tree->Add(bigWave_Event);
+	bigWave_Event->Add(bigWave_FullSound_Track);
+
+	tree->Add(laserGun_Event);
+	laserGun_Event->Add(laserGun_Charge_Track);
+	laserGun_Event->Add(laserGun_Trigger_Track);
+	laserGun_Event->Add(laserGun_Release_Track);
+
+	tree->Add(footsteps_wood_Event);
+	tree->Add(footsteps_wood_Track1);
+	tree->Add(footsteps_wood_Track2);
+	tree->Add(footsteps_wood_Track3);
+	tree->Add(footsteps_wood_Track4);
+	tree->Add(footsteps_wood_Track5);
+	
+	TreeStructure(tree);
 }
+
+void EventManager::TreeStructure(Component* component)
+{
+	std::cout << "Result: " << component->Operation() << std::endl;
+}
+
+void EventManager::TreeStructure(Component* component1, Component* component2)
+{
+	if (component1->IsComposite())
+	{
+		component1->Add(component2);
+
+	}
+	std::cout << "Result: " << component1->Operation() << std::endl;
+}
+
+

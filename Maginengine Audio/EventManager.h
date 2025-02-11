@@ -3,6 +3,10 @@
 // EventManager is considered the "Client" and handles the components.
 
 #pragma once
+// Headers
+#include "Component.h"
+#include "Composite.h"
+#include "Leaf.h"
 
 // libraries
 #include <iostream>
@@ -14,5 +18,26 @@ public:
 	~EventManager();
 
 	void init();
+
+	void TreeStructure(Component* component);
+    void TreeStructure(Component* component1, Component* component2);
+
+private:
+	Component* tree = new Composite;
+
+	Component* bigWave_Event = new Composite;
+	Component* bigWave_FullSound_Track = new Leaf;
+
+	Component* laserGun_Event = new Composite;
+	Component* laserGun_Charge_Track = new Leaf;
+	Component* laserGun_Trigger_Track = new Leaf;
+	Component* laserGun_Release_Track = new Leaf;
+
+	Component* footsteps_wood_Event = new Composite;
+	Component* footsteps_wood_Track1 = new Leaf;
+	Component* footsteps_wood_Track2 = new Leaf;
+	Component* footsteps_wood_Track3 = new Leaf;
+	Component* footsteps_wood_Track4 = new Leaf;
+	Component* footsteps_wood_Track5 = new Leaf;
 };
 

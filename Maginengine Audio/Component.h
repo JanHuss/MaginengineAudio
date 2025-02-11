@@ -6,16 +6,16 @@
 class Component
 {
 protected:
-	Component* parentComp;
+	Component* _parent;
 
 public:
 	virtual ~Component(){};
-	void setParent(Component* parent){this->parentComp = parent;}
-	Component* getParent() const {return this->parentComp;}
+	void setParent(Component* parent){this->_parent = parent;}
+	Component* getParent() const {return this->_parent;}
 
 	virtual void Add(Component* component){}
 	virtual void Remove(Component* component){}
-	virtual bool isComposite() const {return false;}
+	virtual bool IsComposite() const {return false;}
 
 	virtual std::string Operation() const = 0;
 };
