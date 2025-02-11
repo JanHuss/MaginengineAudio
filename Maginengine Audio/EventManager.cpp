@@ -47,17 +47,25 @@ void EventManager::init()
 
 	TreeStructure(tree);
 
-	bigWave_Asset.loadFile("BigWave.wav");
-	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
-	bigWave_FullSound_Track->getAudioData();
 
-	//bigWave_FullSound_Track->play();
-	// concept of how to grab a function created outside of the base class
-	//Leaf* derivedTrack = dynamic_cast<Leaf*> (bigWave_FullSound_Track);
-	//if (derivedTrack)
-	//	derivedTrack->assignAssetToTrack(bigWave_Asset.getAudioData());
-	//
-	//delete derivedTrack;
+	// loading audio files (for now chuck in resource manager)
+	bigWave_Asset.loadFile("BigWave.wav");
+	// assign asset to track. might be good to assign it on creation of the track. 
+	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
+	std::cout << "Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
+	
+
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// REMEMBER TO ASK ABOUT THIS!!!!!
+	// Why is the "realVoice" only allowing me to pass through a pointer?
+	std::cout << "Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
+	realVoice = realVoicePool->getResource();
+	bigWave_FullSound_Track->play(*realVoice);// passing in this pointer might be wrong ask tomorrow
+	//realVoiceTwo = realVoicePool->getResource();
+	//laserGun_Charge_Track->play(*realVoiceTwo);
+	//realVoiceThree = realVoicePool->getResource();
+	//laserGun_Trigger_Track->play(*realVoiceThree);
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 void EventManager::TreeStructure(Component* component)

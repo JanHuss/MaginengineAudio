@@ -1,4 +1,10 @@
+// Base class interface for Composite Design Pattern
+// This pattern is responsible for the Engine hierarchy
+
 #pragma once
+
+// Headers
+#include "RealVoice.h"
 
 // libraries
 #include <string>
@@ -21,10 +27,14 @@ public:
 	virtual void Remove(Component* component){}
 	virtual bool IsComposite() const {return false;}
 
-	// transport controls
+	// voice setup
 	virtual void assignAssetToTrack(std::vector<float> asset){}
+	virtual void assignTrackToRealVoice(RealVoice& voice){}
+	virtual void removeTrackFromRealVoice(RealVoice& voice){}
 	virtual std::vector<float> getAudioData(){return audioData;}
-	virtual void play() const = 0;
+
+	// transport controls
+	virtual void play(RealVoice& voice) = 0;
 	virtual void stop() const = 0;
 
 	virtual std::string Operation() const = 0;

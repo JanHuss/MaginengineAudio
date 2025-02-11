@@ -1,5 +1,13 @@
+// An asset is capable of loading an audio file using the "miniaud.io" 
+// "ma_decoder" type. This class will receive an overhaul, making use
+// of a "ResourceManager" class.
+
 #pragma once
+
+// Headers
 #include "miniaudio.h"
+
+// Libraries
 #include <string>
 #include <iostream>
 #include <vector>

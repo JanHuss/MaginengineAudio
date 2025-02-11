@@ -8,9 +8,13 @@
 #include "Composite.h"
 #include "Leaf.h"
 #include "Asset.h"
+#include "RealVoicePool.h"
+
 
 // libraries
 #include <iostream>
+
+
 
 class EventManager
 {
@@ -44,5 +48,13 @@ private:
 
 	// Assets
 	Asset bigWave_Asset;
+
+	// Object Pool Setup
+	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
+
+	RealVoice* realVoice;
+	RealVoice* realVoiceTwo;
+	RealVoice* realVoiceThree;
+	
 };
 

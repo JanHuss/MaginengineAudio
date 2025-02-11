@@ -133,6 +133,8 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Leaf.cpp" />
     <ClCompile Include="Maginengine Audio.cpp" />
+    <ClCompile Include="RealVoice.cpp" />
+    <ClCompile Include="RealVoicePool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -142,6 +144,8 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Leaf.h" />
     <ClInclude Include="miniaudio.h" />
+    <ClInclude Include="RealVoice.h" />
+    <ClInclude Include="RealVoicePool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

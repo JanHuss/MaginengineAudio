@@ -2,9 +2,13 @@
 // Program execution begins and ends there.
 #define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
+#include "RealVoicePool.h"
 
 #include <iostream>
 #include "Engine.h"
+
+
+RealVoicePool* RealVoicePool::instance = 0;
 
 int main()
 {

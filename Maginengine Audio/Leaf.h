@@ -6,6 +6,7 @@
 
 // Headers
 #include "Component.h"
+#include "RealVoice.h"
 
 // Libraries
 #include <string>
@@ -19,10 +20,11 @@ public:
     std::string Operation() const override; 
 
     void assignAssetToTrack(std::vector<float> asset);
+    void assignTrackToRealVoice(RealVoice& realVoice);
     std::vector<float> getAudioData();
 
     // high-level interface
-    void play() const override;
+    void play(RealVoice& voice) override;
     void stop() const override;
 
     // low-level interface

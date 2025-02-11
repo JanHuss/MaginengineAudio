@@ -5,6 +5,7 @@
 
 // Headers
 #include "Component.h"
+#include "RealVoice.h"
 
 // Libraries
 #include <list>
@@ -22,7 +23,7 @@ public:
     void Remove(Component* component) override;
     bool IsComposite() const override;
 
-    virtual void play() const override {}
+    virtual void play(RealVoice& realVoice) override {}
     virtual void stop() const override {}
 
     std::string Operation() const override;
