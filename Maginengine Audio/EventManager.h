@@ -7,6 +7,7 @@
 #include "Component.h"
 #include "Composite.h"
 #include "Leaf.h"
+#include "Asset.h"
 
 // libraries
 #include <iostream>
@@ -23,6 +24,7 @@ public:
     void TreeStructure(Component* component1, Component* component2);
 
 private:
+	// Composite objects
 	Component* tree = new Composite;
 
 	Component* bigWave_Event = new Composite;
@@ -39,5 +41,8 @@ private:
 	Component* footsteps_wood_Track3 = new Leaf;
 	Component* footsteps_wood_Track4 = new Leaf;
 	Component* footsteps_wood_Track5 = new Leaf;
+
+	// Assets
+	Asset bigWave_Asset;
 };
 

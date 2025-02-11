@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Composite.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
@@ -134,11 +135,13 @@
     <ClCompile Include="Maginengine Audio.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asset.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Leaf.h" />
+    <ClInclude Include="miniaudio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

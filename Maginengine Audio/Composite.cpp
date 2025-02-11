@@ -24,7 +24,7 @@ std::string Composite::Operation() const
 		if (c == _children.back())
 			result += c->Operation();
 		else
-			result += c->Operation() + "+";
+			result += c->Operation() + " + ";
 	}
-	return "Branch(" + result + ")";
+	return "Event (" + result + ")";
 }

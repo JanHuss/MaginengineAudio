@@ -30,6 +30,9 @@
     <ClCompile Include="Leaf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Asset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -45,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Leaf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="miniaudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

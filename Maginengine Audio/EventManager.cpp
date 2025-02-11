@@ -20,11 +20,12 @@ EventManager::~EventManager()
 	delete footsteps_wood_Track3;
 	delete footsteps_wood_Track4;
 	delete footsteps_wood_Track5;
+
 }
 
 void EventManager::init()
 {
-	std::cout << "EventManager -> init() called()" << std::endl;
+	//std::cout << "EventManager -> init() called()" << std::endl;
 
 	// initialising the Engine's hierarchy. Making use of the 
 	// composite pattern
@@ -42,8 +43,21 @@ void EventManager::init()
 	tree->Add(footsteps_wood_Track3);
 	tree->Add(footsteps_wood_Track4);
 	tree->Add(footsteps_wood_Track5);
-	
+
+
 	TreeStructure(tree);
+
+	bigWave_Asset.loadFile("BigWave.wav");
+	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
+	bigWave_FullSound_Track->getAudioData();
+
+	//bigWave_FullSound_Track->play();
+	// concept of how to grab a function created outside of the base class
+	//Leaf* derivedTrack = dynamic_cast<Leaf*> (bigWave_FullSound_Track);
+	//if (derivedTrack)
+	//	derivedTrack->assignAssetToTrack(bigWave_Asset.getAudioData());
+	//
+	//delete derivedTrack;
 }
 
 void EventManager::TreeStructure(Component* component)

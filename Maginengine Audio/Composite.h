@@ -22,6 +22,9 @@ public:
     void Remove(Component* component) override;
     bool IsComposite() const override;
 
+    virtual void play() const override {}
+    virtual void stop() const override {}
+
     std::string Operation() const override;
     
 
