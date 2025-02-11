@@ -34,3 +34,6 @@
 
 # Ignore GitHub Copilot files
 *.copilot.*
+
+# Ignore files larger than 100MB
+*.{100MB}
