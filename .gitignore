@@ -37,3 +37,6 @@
 
 # Ignore files larger than 100MB
 *.{100MB}
+
+# Ignore .vs folder
+*.vs/
