@@ -39,4 +39,7 @@
 *.{100MB}
 
 # Ignore .vs folder
-*.vs/
+.vs/
+
+# Ignore .idea folder
+.idea/
