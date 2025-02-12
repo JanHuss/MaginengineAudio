@@ -5,6 +5,7 @@
 #pragma once
 // classes
 #include "EventManager.h"
+#include "PlaybackDevice.h"
 
 // libraries
 #include <iostream>
@@ -15,10 +16,11 @@ public:
 	Engine();
 	~Engine();
 
-	void init();
+	int init();
 	void run();
 
 private:
+	PlaybackDevice playbackDevice;
 	EventManager eventManager;
 };
 

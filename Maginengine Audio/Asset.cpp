@@ -7,6 +7,7 @@ Asset::Asset()
 
 Asset::~Asset()
 {
+    ma_decoder_uninit(&decoder);
 }
 
 int Asset::loadFile(std::string filePath)

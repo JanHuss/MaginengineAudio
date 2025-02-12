@@ -133,6 +133,7 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Leaf.cpp" />
     <ClCompile Include="Maginengine Audio.cpp" />
+    <ClCompile Include="PlaybackDevice.cpp" />
     <ClCompile Include="RealVoice.cpp" />
     <ClCompile Include="RealVoicePool.cpp" />
     <ClCompile Include="VirtualVoice.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Leaf.h" />
     <ClInclude Include="miniaudio.h" />
+    <ClInclude Include="PlaybackDevice.h" />
     <ClInclude Include="RealVoice.h" />
     <ClInclude Include="RealVoicePool.h" />
     <ClInclude Include="VirtualVoice.h" />

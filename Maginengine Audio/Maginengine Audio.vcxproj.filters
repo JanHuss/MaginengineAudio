@@ -25,18 +25,15 @@
     <Filter Include="Header Files\ObjectPools">
       <UniqueIdentifier>{18a77f6a-6cea-4c3f-a104-812e9a71d301}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Handlers">
+      <UniqueIdentifier>{5abc6c0a-48c9-483c-a1ff-91eeffb8e8b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Handlers">
+      <UniqueIdentifier>{737220a1-696d-47d9-b241-13be3b48521e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Maginengine Audio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Asset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Composite.cpp">
@@ -57,20 +54,20 @@
     <ClCompile Include="VirtualVoicePool.cpp">
       <Filter>Source Files\ObjectPools</Filter>
     </ClCompile>
+    <ClCompile Include="Asset.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaybackDevice.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="miniaudio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Asset.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Header Files\CompositePattern</Filter>
     </ClInclude>
@@ -94,6 +91,21 @@
     </ClInclude>
     <ClInclude Include="VirtualVoicePool.h">
       <Filter>Header Files\ObjectPools</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="miniaudio.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaybackDevice.h">
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

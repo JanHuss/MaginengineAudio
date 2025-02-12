@@ -2,7 +2,6 @@
 
 EventManager::EventManager()
 {
-	init();
 }
 
 EventManager::~EventManager()
@@ -24,7 +23,7 @@ EventManager::~EventManager()
 
 void EventManager::init()
 {
-	//std::cout << "EventManager -> init() called()" << std::endl;
+	std::cout << "EventManager -> initialising \"eventManager\" object" << std::endl;
 
 	// initialising the Engine's hierarchy. Making use of the 
 	// composite pattern
