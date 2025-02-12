@@ -30,10 +30,14 @@ void EventManager::init()
 	// initialising the Engine's hierarchy. Making use of the 
 	// composite pattern
 	tree->Add(bigWave_Event);
-	bigWave_Event->Add(bigWave_FullSound_Track);
+
+	bigWave_Event->Add(bigWave_FullSound_Track); // add a Track to an Event
+	bigWave_Asset.loadFile("BigWave.wav"); // Load an Audio File
+	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData()); // Assign an Audio Asset to a track
 
 	tree->Add(laserGun_Event);
 	laserGun_Event->Add(laserGun_Charge_Track);
+	laserGun_Charge_Track->assignAssetToTrack(bigWave_Asset.getAudioData()); // Assign an Audio Asset to a track
 	laserGun_Event->Add(laserGun_Trigger_Track);
 	laserGun_Event->Add(laserGun_Release_Track);
 
@@ -47,25 +51,17 @@ void EventManager::init()
 
 	TreeStructure(tree);
 
-
-	// loading audio files (for now chuck in resource manager)
-	bigWave_Asset.loadFile("BigWave.wav");
-	// assign asset to track. might be good to assign it on creation of the track. 
-	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
-	std::cout << "Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
 	
-
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	// REMEMBER TO ASK ABOUT THIS!!!!!
-	// Why is the "realVoice" only allowing me to pass through a pointer?
+	std::cout << "Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
 	std::cout << "Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
-	realVoice = realVoicePool->getResource();
-	bigWave_FullSound_Track->play(*realVoice);// passing in this pointer might be wrong ask tomorrow
-	//realVoiceTwo = realVoicePool->getResource();
-	//laserGun_Charge_Track->play(*realVoiceTwo);
-	//realVoiceThree = realVoicePool->getResource();
-	//laserGun_Trigger_Track->play(*realVoiceThree);
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	bigWave_FullSound_Track->play(*realVoicePool);// passing in this pointer might be wrong ask tomorrow
+	
+	laserGun_Charge_Track->play(*realVoicePool);
+
+	laserGun_Trigger_Track->play(*realVoicePool);
+
+	//bigWave_FullSound_Track->stop(*realVoicePool);
 }
 
 void EventManager::TreeStructure(Component* component)

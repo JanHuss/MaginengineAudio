@@ -5,6 +5,7 @@
 
 // Headers
 #include "RealVoice.h"
+#include "RealVoicePool.h"
 
 // libraries
 #include <string>
@@ -29,13 +30,18 @@ public:
 
 	// voice setup
 	virtual void assignAssetToTrack(std::vector<float> asset){}
-	virtual void assignTrackToRealVoice(RealVoice& voice){}
-	virtual void removeTrackFromRealVoice(RealVoice& voice){}
+
+	virtual void assignTrackToRealVoice(RealVoicePool& realVoicePool){}
+	virtual void assignTrackToVirtualVoice(RealVoicePool& realVoicePool){}
+
+	virtual void removeTrackFromRealVoice(RealVoicePool& realVoicePool){}
+	virtual void removeTrackFromVirtualVoice(){}
+
 	virtual std::vector<float> getAudioData(){return audioData;}
 
 	// transport controls
-	virtual void play(RealVoice& voice) = 0;
-	virtual void stop() const = 0;
+	virtual void play(RealVoicePool& realVoicePool) = 0;
+	virtual void stop(RealVoicePool& realVoicePool) = 0;
 
 	virtual std::string Operation() const = 0;
 };

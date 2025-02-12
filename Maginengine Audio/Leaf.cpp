@@ -12,10 +12,23 @@ void Leaf::assignAssetToTrack(std::vector<float> asset)
     audioData = asset;
 }
 
-void Leaf::assignTrackToRealVoice(RealVoice& realVoice)
+void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
 {
-    std::cout << "Leaf -> calling assignTrackToRealVoice function" << std::endl;
-    realVoice.assignDataToBuffer(audioData);
+        std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
+        RealVoice* realVoice = realVoicePool.getResource();
+        realVoice->assignDataToBuffer(audioData);
+}
+
+void Leaf::assignTrackToVirtualVoice(RealVoicePool& realVoicePool)
+{
+    std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
+}
+
+void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)
+{
+    std::cout << "Leaf -> Removing \"Real Voice\" from Track" << std::endl;
+    RealVoice* realVoice = realVoicePool.getResource();
+    realVoice->clearBuffer();
 }
 
 std::vector<float> Leaf::getAudioData()
@@ -24,14 +37,37 @@ std::vector<float> Leaf::getAudioData()
     return audioData;
 }
 
-void Leaf::play(RealVoice& voice)
+void Leaf::play(RealVoicePool& realVoicePool)
 {
-    // assign track to Voice
-    assignTrackToRealVoice(voice);
-    std::cout << "is playing" << std::endl;
+    if (realVoicePool.getRealVoicePoolSize().size() != 0)
+    {
+        voiceType = REAL;
+        assignTrackToRealVoice(realVoicePool);
+        std::cout << "is playing" << std::endl;
+    }
+    else
+    {
+        voiceType = VIRTUAL;
+        assignTrackToVirtualVoice(realVoicePool);
+        //std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
+    }
 }
 
-void Leaf::stop() const
+void Leaf::stop(RealVoicePool& realVoicePool)
 {
     // remove track from Voice
+    std::cout << "is stopping" << std::endl;
+    switch (voiceType)
+    {
+    case REAL:
+        removeTrackFromRealVoice(realVoicePool);
+        break;
+    case VIRTUAL:
+        // removeTrackFromVirtualVoice(virtualVoicePool);
+        break;
+    default:
+        break;
+    }
+
+    
 }

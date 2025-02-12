@@ -52,9 +52,9 @@ private:
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
 
-	RealVoice* realVoice;
-	RealVoice* realVoiceTwo;
-	RealVoice* realVoiceThree;
+	//RealVoice* realVoice;
+	//RealVoice* realVoiceTwo;
+	//RealVoice* realVoiceThree;
 	
 };
 
