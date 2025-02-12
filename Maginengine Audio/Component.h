@@ -4,8 +4,9 @@
 #pragma once
 
 // Headers
-#include "RealVoice.h"
+//#include "RealVoice.h"
 #include "RealVoicePool.h"
+#include "VirtualVoicePool.h"
 
 // libraries
 #include <string>
@@ -40,8 +41,8 @@ public:
 	virtual std::vector<float> getAudioData(){return audioData;}
 
 	// transport controls
-	virtual void play(RealVoicePool& realVoicePool) = 0;
-	virtual void stop(RealVoicePool& realVoicePool) = 0;
+	virtual void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) = 0;
+	virtual void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) = 0;
 
 	virtual std::string Operation() const = 0;
 };

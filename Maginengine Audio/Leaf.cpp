@@ -19,9 +19,11 @@ void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
         realVoice->assignDataToBuffer(audioData);
 }
 
-void Leaf::assignTrackToVirtualVoice(RealVoicePool& realVoicePool)
+void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
 {
     std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
+    VirtualVoice* virtualVoice = virtualVoicePool.getVirtualVoice();
+    virtualVoice->assignDataToBuffer(audioData);
 }
 
 void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)
@@ -31,29 +33,36 @@ void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)
     realVoice->clearBuffer();
 }
 
+void Leaf::removeTrackFromVirtualVoice(VirtualVoicePool& virtualVoicePool)
+{
+    std::cout << "Leaf -> Removing \"Virtual Voice\" from Track" << std::endl;
+    VirtualVoice* virtualVoice = virtualVoicePool.getVirtualVoice();
+    virtualVoice->clearBuffer();
+}
+
 std::vector<float> Leaf::getAudioData()
 {
     //std::cout << "Leaf -> getting Audio Data" << std::endl;
     return audioData;
 }
 
-void Leaf::play(RealVoicePool& realVoicePool)
+void Leaf::play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool)
 {
     if (realVoicePool.getRealVoicePoolSize().size() != 0)
     {
         voiceType = REAL;
         assignTrackToRealVoice(realVoicePool);
-        std::cout << "is playing" << std::endl;
+        std::cout << "is playing real voice" << std::endl;
     }
     else
     {
         voiceType = VIRTUAL;
-        assignTrackToVirtualVoice(realVoicePool);
+        assignTrackToVirtualVoice(virtualVoicePool);
         //std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
     }
 }
 
-void Leaf::stop(RealVoicePool& realVoicePool)
+void Leaf::stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool)
 {
     // remove track from Voice
     std::cout << "is stopping" << std::endl;
@@ -63,7 +72,7 @@ void Leaf::stop(RealVoicePool& realVoicePool)
         removeTrackFromRealVoice(realVoicePool);
         break;
     case VIRTUAL:
-        // removeTrackFromVirtualVoice(virtualVoicePool);
+        removeTrackFromVirtualVoice(virtualVoicePool);
         break;
     default:
         break;

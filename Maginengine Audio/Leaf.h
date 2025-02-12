@@ -6,8 +6,8 @@
 
 // Headers
 #include "Component.h"
-#include "RealVoice.h"
 #include "RealVoicePool.h"
+#include "VirtualVoicePool.h"
 
 // Libraries
 #include <string>
@@ -22,15 +22,18 @@ public:
     std::string Operation() const override; 
 
     void assignAssetToTrack(std::vector<float> asset);
+
     void assignTrackToRealVoice(RealVoicePool& realVoicePool);
-    void assignTrackToVirtualVoice(RealVoicePool& realVoicePool);
+    void assignTrackToVirtualVoice(VirtualVoicePool& VirtualVoicePool);
+
     void removeTrackFromRealVoice(RealVoicePool& realVoicePool);
+    void removeTrackFromVirtualVoice(VirtualVoicePool& virtualVoicePool);
 
     std::vector<float> getAudioData();
 
     // high-level interface
-    void play(RealVoicePool& realVoicePool) override;
-    void stop(RealVoicePool& realVoicePool) override;
+    void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
+    void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
 
     // low-level interface
 

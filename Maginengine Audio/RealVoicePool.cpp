@@ -21,15 +21,15 @@ RealVoice* RealVoicePool::getRealVoice()
 	{
 		//std::cout << "Creating new resource." << std::endl;
 		//return new Resource;
-		std::cout << "VirtualVoicePool -> Reusing existing Voice from pool." << std::endl;
+		std::cout << "RealVoicePool -> Reusing existing \"Real Voice\" from pool." << std::endl;
 		RealVoice* realVoice = realVoices.front();
 		realVoices.pop_front();
-		std::cout << "VirtualVoicePool -> Resources size: " << realVoices.size() << std::endl;
+		std::cout << "RealVoicePool -> \"Real Voice\" pool size: " << realVoices.size() << std::endl;
 		return realVoice;
 	}
 	else
 	{
-		std::cout << "VirtualVoicePool -> Max Voices used. Cannot add further Voices." << std::endl;
+		std::cout << "RealVoicePool -> Max \"Real Voices\" used. Cannot add further \"Real Voices\"." << std::endl;
 		// direct to Virtual Voice Pool
 	}
 }

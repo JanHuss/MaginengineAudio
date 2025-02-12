@@ -5,7 +5,8 @@
 
 // Headers
 #include "Component.h"
-#include "RealVoice.h"
+#include "RealVoicePool.h"
+#include "VirtualVoicePool.h"
 
 // Libraries
 #include <list>
@@ -23,8 +24,8 @@ public:
     void Remove(Component* component) override;
     bool IsComposite() const override;
 
-    virtual void play(RealVoicePool& realVoicePool) override {}
-    virtual void stop(RealVoicePool& realVoicePool) override {}
+    virtual void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override {}
+    virtual void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override {}
 
     std::string Operation() const override;
     

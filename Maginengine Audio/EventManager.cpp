@@ -20,7 +20,6 @@ EventManager::~EventManager()
 	delete footsteps_wood_Track3;
 	delete footsteps_wood_Track4;
 	delete footsteps_wood_Track5;
-
 }
 
 void EventManager::init()
@@ -48,19 +47,20 @@ void EventManager::init()
 	tree->Add(footsteps_wood_Track4);
 	tree->Add(footsteps_wood_Track5);
 
-
 	TreeStructure(tree);
 
-	
 	std::cout << "EventManager -> Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
 	std::cout << "EventManager -> Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
 
-	bigWave_FullSound_Track->play(*realVoicePool);// passing in this pointer might be wrong ask tomorrow
+	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
 	
-	laserGun_Charge_Track->play(*realVoicePool);
+	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
 
-	laserGun_Trigger_Track->play(*realVoicePool);
+	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
 
+	laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
+
+	footsteps_wood_Track1->play(*realVoicePool, *virtualVoicePool);
 	//bigWave_FullSound_Track->stop(*realVoicePool);
 }
 
