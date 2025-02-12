@@ -1,11 +1,7 @@
 #include "Engine.h"
 
-Engine::Engine() : 
-	realVoice(),virtualVoice(), 
-		playbackDevice(&realVoice, 
-			&virtualVoice)
+Engine::Engine()
 {
-	
 	init();
 }
 

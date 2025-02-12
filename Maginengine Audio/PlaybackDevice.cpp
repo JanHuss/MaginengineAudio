@@ -1,6 +1,6 @@
 #include "PlaybackDevice.h"
 
-PlaybackDevice::PlaybackDevice(RealVoice* rVoice, VirtualVoice* vVoice) : realVoice(rVoice), virtualVoice(vVoice)
+PlaybackDevice::PlaybackDevice()
 {
 }
 
