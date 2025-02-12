@@ -7,6 +7,10 @@
 #include "EventManager.h"
 #include "PlaybackDevice.h"
 
+// I don't think this is right
+#include "RealVoice.h"
+#include "VirtualVoice.h"
+
 // libraries
 #include <iostream>
 
@@ -20,6 +24,11 @@ public:
 	void run();
 
 private:
+	// needs to be refactored. shouldn't be passing this through playback
+	// just for test purposes
+	RealVoice realVoice;
+	VirtualVoice virtualVoice;
+
 	PlaybackDevice playbackDevice;
 	EventManager eventManager;
 };

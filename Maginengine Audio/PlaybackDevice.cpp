@@ -1,28 +1,28 @@
 #include "PlaybackDevice.h"
 
-PlaybackDevice::PlaybackDevice(/*RealVoice* rVoice, VirtualVoice* vVoice*/)
+PlaybackDevice::PlaybackDevice(RealVoice* rVoice, VirtualVoice* vVoice) : realVoice(rVoice), virtualVoice(vVoice)
 {
 }
 
 void PlaybackDevice::data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
-	//PlaybackDevice* playbackDevice = static_cast<PlaybackDevice*>(pDevice->pUserData);
-    //if (!playbackDevice)
-    //{
-    //    memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
-    //    return;
-    //}
-    //
-    //// create a voice pointer to get a voice within the playback device class
-    //Voice* voice = playbackDevice->getVoice();
-    //if (!voice)
-    //{
-    //    memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
-    //    return;
-    //}
-    //
-    //// Then I can call the `processAudio` within the `voice`.
-    //voice->processAudio(static_cast<float*>(pOutput), frameCount);
+	PlaybackDevice* playbackDevice = static_cast<PlaybackDevice*>(pDevice->pUserData);
+    if (!playbackDevice)
+    {
+        memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
+        return;
+    }
+    
+    // create a voice pointer to get a voice within the playback device class
+    RealVoice* _realVoice = playbackDevice->getRealVoice();
+    if (!_realVoice)
+    {
+        memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
+        return;
+    }
+    
+    // Then I can call the `processAudio` within the `voice`.
+    _realVoice->processAudio(static_cast<float*>(pOutput), frameCount);
 }
 
 int PlaybackDevice::init()

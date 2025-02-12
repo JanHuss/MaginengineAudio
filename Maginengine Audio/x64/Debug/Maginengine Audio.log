@@ -1,7 +1,11 @@
-﻿  Asset.cpp
-  EventManager.cpp
+﻿  Engine.cpp
 D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(34,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'EventManager.cpp')
+  (compiling source file 'Engine.cpp')
+  
+  PlaybackDevice.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(34,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'PlaybackDevice.cpp')
   
   Generating Code...
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Engine.cpp(41): warning C4715: 'Engine::init': not all control paths return a value
   Maginengine Audio.vcxproj -> D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe

@@ -52,14 +52,15 @@ void EventManager::init()
 	std::cout << "EventManager -> Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
 
 	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
-	
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
-
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
-
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
-
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	footsteps_wood_Track1->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	//bigWave_FullSound_Track->stop(*realVoicePool);
 }
 

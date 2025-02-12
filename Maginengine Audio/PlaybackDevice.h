@@ -8,7 +8,7 @@
 class PlaybackDevice
 {
 public:
-    PlaybackDevice(/*RealVoice* rVoice, VirtualVoice* vVoice*/);
+    PlaybackDevice(RealVoice* rVoice, VirtualVoice* vVoice);
     static void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount);
     int init();
     RealVoice* getRealVoice();
