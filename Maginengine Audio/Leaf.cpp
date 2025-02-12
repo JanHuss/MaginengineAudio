@@ -7,15 +7,15 @@ std::string Leaf::Operation() const
 
 void Leaf::assignAssetToTrack(std::vector<float> asset)
 {
+    audioData = asset;
     std::cout << "Leaf -> assigning Asset to Track" << std::endl;
     std::cout << "Leaf -> audio data's current size: " << getAudioData().size() << std::endl;
-    audioData = asset;
 }
 
 void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
 {
         std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
-        RealVoice* realVoice = realVoicePool.getResource();
+        RealVoice* realVoice = realVoicePool.getRealVoice();
         realVoice->assignDataToBuffer(audioData);
 }
 
@@ -27,7 +27,7 @@ void Leaf::assignTrackToVirtualVoice(RealVoicePool& realVoicePool)
 void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)
 {
     std::cout << "Leaf -> Removing \"Real Voice\" from Track" << std::endl;
-    RealVoice* realVoice = realVoicePool.getResource();
+    RealVoice* realVoice = realVoicePool.getRealVoice();
     realVoice->clearBuffer();
 }
 

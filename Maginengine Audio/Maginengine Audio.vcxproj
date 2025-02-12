@@ -135,6 +135,8 @@
     <ClCompile Include="Maginengine Audio.cpp" />
     <ClCompile Include="RealVoice.cpp" />
     <ClCompile Include="RealVoicePool.cpp" />
+    <ClCompile Include="VirtualVoice.cpp" />
+    <ClCompile Include="VirtualVoicePool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -146,6 +148,9 @@
     <ClInclude Include="miniaudio.h" />
     <ClInclude Include="RealVoice.h" />
     <ClInclude Include="RealVoicePool.h" />
+    <ClInclude Include="VirtualVoice.h" />
+    <ClInclude Include="VirtualVoicePool.h" />
+    <ClInclude Include="VoiceBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

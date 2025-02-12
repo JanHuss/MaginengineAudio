@@ -52,8 +52,8 @@ void EventManager::init()
 	TreeStructure(tree);
 
 	
-	std::cout << "Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
-	std::cout << "Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
+	std::cout << "EventManager -> Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
+	std::cout << "EventManager -> Getting RealVoicePool size: " << realVoicePool->getRealVoicePoolSize().size() << std::endl;
 
 	bigWave_FullSound_Track->play(*realVoicePool);// passing in this pointer might be wrong ask tomorrow
 	
@@ -66,7 +66,7 @@ void EventManager::init()
 
 void EventManager::TreeStructure(Component* component)
 {
-	std::cout << "Result: " << component->Operation() << std::endl;
+	std::cout << "EventManager -> Result: " << component->Operation() << std::endl;
 }
 
 void EventManager::TreeStructure(Component* component1, Component* component2)
@@ -76,7 +76,7 @@ void EventManager::TreeStructure(Component* component1, Component* component2)
 		component1->Add(component2);
 
 	}
-	std::cout << "Result: " << component1->Operation() << std::endl;
+	std::cout << "EventManager -> Result: " << component1->Operation() << std::endl;
 }
 
 

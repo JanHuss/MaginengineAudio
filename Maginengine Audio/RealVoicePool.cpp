@@ -15,26 +15,26 @@ RealVoicePool* RealVoicePool::getInstance()
 	return instance;
 }
 
-RealVoice* RealVoicePool::getResource()
+RealVoice* RealVoicePool::getRealVoice()
 {
 	if (!realVoices.empty())
 	{
 		//std::cout << "Creating new resource." << std::endl;
 		//return new Resource;
-		std::cout << "RealVoicePool -> Reusing existing Voice from pool." << std::endl;
+		std::cout << "VirtualVoicePool -> Reusing existing Voice from pool." << std::endl;
 		RealVoice* realVoice = realVoices.front();
 		realVoices.pop_front();
-		std::cout << "RealVoicePool -> Resources size: " << realVoices.size() << std::endl;
+		std::cout << "VirtualVoicePool -> Resources size: " << realVoices.size() << std::endl;
 		return realVoice;
 	}
 	else
 	{
-		std::cout << "RealVoicePool -> Max Voices used. Cannot add further Voices." << std::endl;
+		std::cout << "VirtualVoicePool -> Max Voices used. Cannot add further Voices." << std::endl;
 		// direct to Virtual Voice Pool
 	}
 }
 
-void RealVoicePool::returnResource(RealVoice* object)
+void RealVoicePool::returnRealVoice(RealVoice* object)
 {
 	object->clearBuffer();
 	realVoices.push_back(object);

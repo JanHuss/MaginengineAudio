@@ -23,8 +23,8 @@ private:
 
 public:
 	static RealVoicePool* getInstance();
-	RealVoice* getResource();
-	void returnResource(RealVoice* object);
+	RealVoice* getRealVoice();
+	void returnRealVoice(RealVoice* object);
 	std::list<RealVoice*> getRealVoicePoolSize();
 };
 

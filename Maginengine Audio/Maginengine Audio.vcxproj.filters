@@ -51,6 +51,12 @@
     <ClCompile Include="RealVoice.cpp">
       <Filter>Source Files\ObjectPools</Filter>
     </ClCompile>
+    <ClCompile Include="VirtualVoice.cpp">
+      <Filter>Source Files\ObjectPools</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualVoicePool.cpp">
+      <Filter>Source Files\ObjectPools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -78,6 +84,15 @@
       <Filter>Header Files\ObjectPools</Filter>
     </ClInclude>
     <ClInclude Include="RealVoice.h">
+      <Filter>Header Files\ObjectPools</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualVoice.h">
+      <Filter>Header Files\ObjectPools</Filter>
+    </ClInclude>
+    <ClInclude Include="VoiceBase.h">
+      <Filter>Header Files\ObjectPools</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualVoicePool.h">
       <Filter>Header Files\ObjectPools</Filter>
     </ClInclude>
   </ItemGroup>

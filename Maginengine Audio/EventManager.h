@@ -9,6 +9,7 @@
 #include "Leaf.h"
 #include "Asset.h"
 #include "RealVoicePool.h"
+#include "VirtualVoicePool.h"
 
 
 // libraries
@@ -51,7 +52,7 @@ private:
 
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
-
+	VirtualVoicePool* virtualVoicePool = VirtualVoicePool::getInstance();
 	//RealVoice* realVoice;
 	//RealVoice* realVoiceTwo;
 	//RealVoice* realVoiceThree;
