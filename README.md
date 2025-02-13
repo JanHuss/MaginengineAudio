@@ -1,10 +1,8 @@
-# Maginengine Audio Engine 2.0<br>
+# Maginengine Audio Engine 2.0
+
+## Introduction
 
 This repository is a revised version of the Maginengine Audio Engine 1.0.
----
-
-
-
 ---
 The Project started as an honours project which, after the first half of the 
 year, received a complete overhaul. Main reasons for this were that the engine 
