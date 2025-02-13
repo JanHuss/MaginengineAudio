@@ -29,6 +29,6 @@ public:
 private:
     std::vector<float> buffer;
     size_t playHead = 0;
-    bool isPlaying = false;
+    bool isActive = false;
 };
 

@@ -26,8 +26,8 @@ public:
 private:
 	// needs to be refactored. shouldn't be passing this through playback
 	// just for test purposes
-	RealVoice realVoice;
-	VirtualVoice virtualVoice;
+	//RealVoice realVoice;
+	//VirtualVoice virtualVoice;
 
 	PlaybackDevice playbackDevice;
 	EventManager eventManager;

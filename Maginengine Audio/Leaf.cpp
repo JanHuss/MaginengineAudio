@@ -14,9 +14,12 @@ void Leaf::assignAssetToTrack(std::vector<float> asset)
 
 void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
 {
-        std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
         RealVoice* realVoice = realVoicePool.getRealVoice();
-        realVoice->assignDataToBuffer(audioData);
+        if (realVoice)
+        {
+            std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
+            realVoice->assignDataToBuffer(audioData);
+        }
 }
 
 void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
@@ -48,17 +51,17 @@ std::vector<float> Leaf::getAudioData()
 
 void Leaf::play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool)
 {
-    if (realVoicePool.getRealVoicePoolSize().size() != 0)
+    if (!realVoicePool.getAllVoicesActive())
     {
         voiceType = REAL;
         assignTrackToRealVoice(realVoicePool);
-        std::cout << "is playing real voice" << std::endl;
+        std::cout << "Leaf-> is playing real voice" << std::endl;
     }
     else
     {
         voiceType = VIRTUAL;
         assignTrackToVirtualVoice(virtualVoicePool);
-        //std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
+        std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
     }
 }
 

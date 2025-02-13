@@ -5,7 +5,7 @@ void RealVoice::assignDataToBuffer(std::vector<float>& audioData)
     //std::clog << "Voice -> audio data size in voice: " << audioData.size() << std::endl;
     buffer = audioData;
     playHead = 0;
-    isPlaying = true;
+    setIsActive(true);
     if (!buffer.empty())
         std::clog << "RealVoice -> Buffer not empty. Audio data assigned to Buffer" << std::endl;
     std::clog << "RealVoice -> Buffer size: " << buffer.size() << std::endl;
@@ -15,7 +15,7 @@ void RealVoice::clearBuffer()
 {
     buffer.clear();
     playHead = 0;
-    isPlaying = false;
+    setIsActive(false);
     std::clog << "RealVoice -> Buffer cleared" << std::endl;
     std::clog << "RealVoice -> buffer size: " << buffer.size() << std::endl;
 }
@@ -23,7 +23,7 @@ void RealVoice::clearBuffer()
 void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 {
     //std::clog << "Voice -> \"processAudio()\" being called" << std::endl;
-    if (!isPlaying || buffer.empty())
+    if (!getIsActive() || buffer.empty())
     {
         memset(outputBuffer, 0, frameCount * sizeof(float)/* * channels*/);
         return;
@@ -55,7 +55,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
             // add looping here
 
             // add stop here
-            isPlaying = false;
+            setIsActive(false);
             break;
         }
 
@@ -63,6 +63,16 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
         outputBuffer[i * 2] = sampleLeft;
         outputBuffer[i * 2 + 1] = sampleRight;
     }
+}
+
+void RealVoice::setIsActive(bool iActive)
+{
+    isActive = iActive;
+}
+
+bool RealVoice::getIsActive()
+{
+    return isActive;
 }
 
 std::vector<float> RealVoice::getBuffer()

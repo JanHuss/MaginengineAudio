@@ -7,9 +7,6 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-	//ma_decoder_uninit(&trapDoor.decoder);
-	ma_device_uninit(&playbackDevice.device);
-
 	std::cout << "!!! *********************** !!!" << std::endl;
 	std::cout << "!!! Engine -> Shutting down !!!" << std::endl;
 	std::cout << "!!! *********************** !!!" << std::endl;
@@ -18,6 +15,7 @@ Engine::~Engine()
 int Engine::init()
 {
 	//std::cout << "Engine -> init() called()" << std::endl;
+
 	playbackDevice.init();
 
 	// start playback device which will run callback function and wait for any audio data to be passed through

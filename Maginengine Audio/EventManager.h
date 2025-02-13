@@ -10,7 +10,7 @@
 #include "Asset.h"
 #include "RealVoicePool.h"
 #include "VirtualVoicePool.h"
-
+#include "PlaybackDevice.h"
 
 // libraries
 #include <iostream>
@@ -29,6 +29,8 @@ public:
     void TreeStructure(Component* component1, Component* component2);
 
 private:
+	PlaybackDevice playbackDevice;
+
 	// Composite objects
 	Component* tree = new Composite;
 

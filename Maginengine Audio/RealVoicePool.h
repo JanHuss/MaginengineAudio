@@ -12,19 +12,26 @@
 // Libraries
 #include <iostream>
 #include <list>
+#include <vector>
 
 class RealVoicePool
 {
 private:
-	std::list<RealVoice*> realVoices;
+	//std::list<RealVoice*> realVoices;
+	std::vector<RealVoice*> realVoices;
 	int maxRealVoices;
 	static RealVoicePool* instance;
+	bool allVoicesActive;
+	int realVoicePoolIndex;
 	RealVoicePool();
 
 public:
 	static RealVoicePool* getInstance();
 	RealVoice* getRealVoice();
 	void returnRealVoice(RealVoice* object);
-	std::list<RealVoice*> getRealVoicePoolSize();
+	std::vector<RealVoice*> getRealVoicePool();
+	void setAllVoicesActive(bool aVActive);
+	bool getAllVoicesActive();
+
 };
 
