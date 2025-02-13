@@ -1,4 +1,4 @@
-# Maginengine Audio Engine 2.0
+# Maginengine Audio Engine 2.0<br>
 
 This repository is a revised version of the Maginengine Audio Engine 1.0.
 ---
@@ -31,7 +31,7 @@ and easy to expand on.
 ### Object Pool Pattern
 
 
----
+
 
 
 
