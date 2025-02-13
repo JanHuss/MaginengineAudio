@@ -3,14 +3,18 @@
 ## Introduction
 <br>
 This repository is a revised version of the Maginengine Audio Engine 1.0.
+
 ---
+
 The Project started as an honours project which, after the first half of the 
 year, received a complete overhaul. Main reasons for this were that the engine 
 structure became incredibly convoluted and tightly coupled. <br>
 After a thorough re-evaluation, I made the decision to redesign the engine.
 By considering various design patterns, the engine is now loosely coupled at most
 and easy to expand on.
+
 ---
+
 ## Keywords
 
 - **Engine:** runs entire application
@@ -22,7 +26,9 @@ Tracks at once
 Contains transport controls for assigned Asset
 - **Asset:** Loads an audio file and will be handled by a “**ResourceManager**” 
 - **Voice:** Handles the processing of audio data to the “**PlaybackDevice**”
+ 
 ---
+
 ## Engine Structure
 
 ### Composite Pattern
