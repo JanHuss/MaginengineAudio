@@ -1,6 +1,39 @@
-﻿  RealVoicePool.cpp
+﻿  Asset.cpp
+  Composite.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Composite.cpp')
+  
+  Engine.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Engine.cpp')
+  
+  EventManager.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'EventManager.cpp')
+  
+  Leaf.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Leaf.cpp')
+  
+  Maginengine Audio.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Maginengine%20Audio.cpp')
+  
+  PlaybackDevice.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'PlaybackDevice.cpp')
+  
+  RealVoice.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'RealVoice.cpp')
+  
+  RealVoicePool.cpp
 D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(35,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   (compiling source file 'RealVoicePool.cpp')
   
+  VirtualVoice.cpp
+  VirtualVoicePool.cpp
+  Generating Code...
 D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoicePool.cpp(67): warning C4715: 'RealVoicePool::getRealVoice': not all control paths return a value
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Engine.cpp(35): warning C4715: 'Engine::init': not all control paths return a value
   Maginengine Audio.vcxproj -> D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe
