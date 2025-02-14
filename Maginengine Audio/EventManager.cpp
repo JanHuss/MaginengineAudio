@@ -46,29 +46,31 @@ void EventManager::init()
 	laserGun_Event->Add(laserGun_Release_Track);
 
 	tree->Add(footsteps_wood_Event);
-	tree->Add(footsteps_wood_Track1);
-	tree->Add(footsteps_wood_Track2);
-	tree->Add(footsteps_wood_Track3);
-	tree->Add(footsteps_wood_Track4);
-	tree->Add(footsteps_wood_Track5);
+	footsteps_wood_Event->Add(footsteps_wood_Track1);
+	footsteps_wood_Event->Add(footsteps_wood_Track2);
+	footsteps_wood_Event->Add(footsteps_wood_Track3);
+	footsteps_wood_Event->Add(footsteps_wood_Track4);
+	footsteps_wood_Event->Add(footsteps_wood_Track5);
+
+	tree->Add(smilyDay_Event);
+	smilyDay_Event->Add(smilyDay_Track);
+	smilyDay_Asset.loadFile("assets/audio/SmileyDayToYa.wav");
+	smilyDay_Track->assignAssetToTrack(smilyDay_Asset.getAudioData());
 
 	TreeStructure(tree);
 
 	std::cout << "EventManager -> Getting audio data size: " << bigWave_FullSound_Track->getAudioData().size() << std::endl;
-	std::cout << "EventManager -> Getting RealVoicePool size: " << realVoicePool->getRealVoicePool().size() << std::endl;
-
-	
-
-	
+	std::cout << "EventManager -> Getting RealVoicePool size: " << realVoicePool->getRealVoicePool().size() << std::endl;	
 
 	// Test runs
-	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
+	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(120));
+	//laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));
 	//footsteps_wood_Track1->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));

@@ -53,11 +53,15 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
         else
         {
             // add looping here
-
+            if (isLooping)
+                playHead = 0;
             // add stop here
-            setIsActive(false);
-            std::cout << "set Is active is false" << std::endl;
-            break;
+            else
+            {
+                setIsActive(false);
+                std::cout << "set Is active is false" << std::endl;
+                break;
+            }
         }
 
         

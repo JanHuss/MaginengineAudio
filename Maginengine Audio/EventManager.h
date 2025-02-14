@@ -49,9 +49,13 @@ private:
 	Component* footsteps_wood_Track4 = new Leaf;
 	Component* footsteps_wood_Track5 = new Leaf;
 
+	Component* smilyDay_Event = new Composite;
+	Component* smilyDay_Track = new Leaf;
+
 	// Assets
 	Asset bigWave_Asset;
 	Asset trapDoor_Asset;
+	Asset smilyDay_Asset;
 
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();

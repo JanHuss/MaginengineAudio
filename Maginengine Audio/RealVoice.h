@@ -35,4 +35,5 @@ private:
     bool isActive = false;
     int channels = 2;
     int pan = 0.5f;
+    bool isLooping = true;
 };
