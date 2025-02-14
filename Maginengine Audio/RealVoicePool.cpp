@@ -2,7 +2,7 @@
 
 RealVoicePool::RealVoicePool()
 {
-	maxRealVoices = 10;
+	maxRealVoices = 2;
 	for(int i = 0; i < maxRealVoices; i++)
 	realVoices.push_back(new RealVoice);
 	setAllVoicesActive(false);
@@ -18,26 +18,20 @@ RealVoicePool* RealVoicePool::getInstance()
 
 RealVoice* RealVoicePool::getRealVoice()
 {
-	//if (!realVoices.empty())
-	//{
-		//std::cout << "Creating new resource." << std::endl;
-		//return new Resource;
-		//std::cout << "RealVoicePool -> Reusing existing \"Real Voice\" from pool." << std::endl;
-		//RealVoice* realVoice = realVoices.front();
-		//realVoices.pop_front();
-		//std::cout << "RealVoicePool -> \"Real Voice\" pool size: " << realVoices.size() << std::endl;
-
 	for(int i = 0; i < realVoices.size(); i++)
 	{
-		//std::clog << "RealVoicePool -> realVoices.size(): " << realVoices.size()<< std::endl;
+		std::clog << "RealVoicePool -> getRealVoice() -> realVoices.size(): " << realVoices.size()<< std::endl;
 		if (!realVoices[i]->getIsActive())
+		{
 			realVoicePoolIndex = i;
+			break;
+		}
 		else if (i+1 == realVoices.size() && realVoices[i]->getIsActive())
 		{
+			//realVoices[i]->setPlayHead(0);
 			setAllVoicesActive(true);
 			std::clog << "RealVoicePool -> All \"Real Voices\" are active." << std::endl;
 		}
-		
 	}	
 	if (!realVoices[realVoicePoolIndex]->getIsActive())
 	{
@@ -45,25 +39,7 @@ RealVoice* RealVoicePool::getRealVoice()
 		std::clog << "RealVoicePool -> Setting a Real Voice to: Active" << std::endl;
 		return realVoices[realVoicePoolIndex];
 	}
-	//else
-	//{
-	//	std::clog << "RealVoicePool -> All \"Real Voices\" are active." << std::endl;
-	//	//setAllVoicesActive(true);
-	//	return nullptr;
-	//}
-			
-	//return nullptr;
-
-		// iterate through list
-		// if a voice is not active, set the voice to active, then return the voice
-
-
-	//}
-	//else
-	//{
-	//	std::cout << "RealVoicePool -> Max \"Real Voices\" used. Cannot add further \"Real Voices\"." << std::endl;
-	//	// direct to Virtual Voice Pool
-	//}
+	return nullptr;
 }
 
 void RealVoicePool::returnRealVoice(RealVoice* object)
@@ -86,5 +62,11 @@ void RealVoicePool::setAllVoicesActive(bool aVActive)
 
 bool RealVoicePool::getAllVoicesActive()
 {
-	return allVoicesActive;
+	for (auto voice : realVoices)
+	{
+		if (!voice->getIsActive())
+			return false;
+	}
+	return true;
+	//return allVoicesActive;
 }

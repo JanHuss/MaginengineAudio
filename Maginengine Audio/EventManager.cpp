@@ -39,8 +39,10 @@ void EventManager::init()
 
 	tree->Add(laserGun_Event);
 	laserGun_Event->Add(laserGun_Charge_Track);
-	laserGun_Charge_Track->assignAssetToTrack(bigWave_Asset.getAudioData()); // Assign an Audio Asset to a track
+	trapDoor_Asset.loadFile("TrapDoor.wav");
+	laserGun_Charge_Track->assignAssetToTrack(trapDoor_Asset.getAudioData()); // Assign an Audio Asset to a track
 	laserGun_Event->Add(laserGun_Trigger_Track);
+	laserGun_Trigger_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
 	laserGun_Event->Add(laserGun_Release_Track);
 
 	tree->Add(footsteps_wood_Event);
@@ -61,12 +63,12 @@ void EventManager::init()
 
 	// Test runs
 	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
-	std::this_thread::sleep_for(std::chrono::seconds(5));
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
-	std::this_thread::sleep_for(std::chrono::seconds(5));
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
-	std::this_thread::sleep_for(std::chrono::seconds(5));
-	//laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));
 	//footsteps_wood_Track1->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));

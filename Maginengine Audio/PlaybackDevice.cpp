@@ -13,30 +13,16 @@ void PlaybackDevice::data_callback(ma_device* pDevice, void* pOutput, const void
         return;
     }
     
+    float* outputbuffer = static_cast<float*>(pOutput);
+    memset(outputbuffer, 0, frameCount * sizeof(float) * pDevice->playback.channels);
     // create a voice pointer to get a voice within the playback device class
-    std::vector<RealVoice*> _realVoicePool = playbackDevice->realVoicePool->getRealVoicePool();
-    //RealVoice* _realVoice = playbackDevice->getRealVoice();
-    //if (_realVoicePool)
-    //{
-        for (int i = 0; i < _realVoicePool.size(); i++)
-        {
-           if (!_realVoicePool[i])
-            {
-            memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
-            return;
-            }
-           
-           _realVoicePool[i]->processAudio(static_cast<float*>(pOutput), frameCount);
-        }
-    //}
-   //if (!_realVoice)
-   //{
-   //    memset(pOutput, 0, frameCount * sizeof(float) * pDevice->playback.channels);
-   //    return;
-   //}
-    
-    // Then I can call the `processAudio` within the `voice`.
-    //_realVoice->processAudio(static_cast<float*>(pOutput), frameCount);
+    std::vector<RealVoice*> voices = playbackDevice->realVoicePool->getRealVoicePool();
+
+    for (auto voice : voices)
+    {
+       if (voice && voice->getIsActive())
+           voice->processAudio(outputbuffer, frameCount);       
+    }
 }
 
 int PlaybackDevice::init()

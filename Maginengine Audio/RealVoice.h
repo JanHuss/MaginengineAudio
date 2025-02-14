@@ -24,6 +24,8 @@ public:
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
     void setIsActive(bool iActive);
     bool getIsActive();
+    void setPlayHead(size_t plHead);
+    size_t getPlayHead();
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
 

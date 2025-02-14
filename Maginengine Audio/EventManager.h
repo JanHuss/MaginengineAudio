@@ -51,6 +51,7 @@ private:
 
 	// Assets
 	Asset bigWave_Asset;
+	Asset trapDoor_Asset;
 
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
