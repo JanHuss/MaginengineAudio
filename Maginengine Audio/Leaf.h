@@ -31,6 +31,9 @@ public:
 
     std::vector<float> getAudioData();
 
+    void setLoop(bool loop);
+    bool getLoop();
+
     // high-level interface
     void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
     void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
@@ -42,6 +45,7 @@ private:
     std::vector<float> audioData;
     enum VOICETYPE {REAL, VIRTUAL};
     VOICETYPE voiceType;
+    bool isLooping;
 
 };
 

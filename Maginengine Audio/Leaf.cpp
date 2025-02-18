@@ -18,7 +18,7 @@ void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
         if (realVoice)
         {
             std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
-            realVoice->assignDataToBuffer(audioData);
+            realVoice->assignDataToBuffer(audioData, getLoop());
         }
 }
 
@@ -26,7 +26,7 @@ void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
 {
     std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
     VirtualVoice* virtualVoice = virtualVoicePool.getVirtualVoice();
-    virtualVoice->assignDataToBuffer(audioData);
+    virtualVoice->assignDataToBuffer(audioData, getLoop());
 }
 
 void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)
@@ -47,6 +47,16 @@ std::vector<float> Leaf::getAudioData()
 {
     //std::cout << "Leaf -> getting Audio Data" << std::endl;
     return audioData;
+}
+
+void Leaf::setLoop(bool loop)
+{
+    isLooping = loop;
+}
+
+bool Leaf::getLoop()
+{
+    return isLooping;
 }
 
 void Leaf::play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool)

@@ -43,3 +43,6 @@
 
 # Ignore .idea folder
 .idea/
+*.ipch
+*.ipch
+*.ipch

@@ -1,6 +1,6 @@
 #include "VirtualVoice.h"
 
-void VirtualVoice::assignDataToBuffer(std::vector<float>& audioData)
+void VirtualVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
 {
 }
 

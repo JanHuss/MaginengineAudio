@@ -1,5 +1,48 @@
-﻿  EventManager.cpp
+﻿  Composite.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Composite.cpp')
+  
+  Engine.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Engine.cpp')
+  
+  EventManager.cpp
 D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   (compiling source file 'EventManager.cpp')
   
-  Maginengine Audio.vcxproj -> D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe
+  Leaf.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Leaf.cpp')
+  
+  Maginengine Audio.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Leaf.cpp(21,22): error C2660: 'RealVoice::assignDataToBuffer': function does not take 1 arguments
+  D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(22,10):
+  see declaration of 'RealVoice::assignDataToBuffer'
+  D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Leaf.cpp(21,22):
+  while trying to match the argument list '(std::vector<float,std::allocator<float>>)'
+  
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Leaf.cpp(29,17): error C2660: 'VirtualVoice::assignDataToBuffer': function does not take 1 arguments
+  D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\VirtualVoice.h(22,7):
+  see declaration of 'VirtualVoice::assignDataToBuffer'
+  D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Leaf.cpp(29,17):
+  while trying to match the argument list '(std::vector<float,std::allocator<float>>)'
+  
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Maginengine%20Audio.cpp')
+  
+  PlaybackDevice.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'PlaybackDevice.cpp')
+  
+  RealVoice.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'RealVoice.cpp')
+  
+  RealVoicePool.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(37,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'RealVoicePool.cpp')
+  
+  VirtualVoice.cpp
+  VirtualVoicePool.cpp
+  Generating Code...
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\Engine.cpp(35): warning C4715: 'Engine::init': not all control paths return a value

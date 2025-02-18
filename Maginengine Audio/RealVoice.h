@@ -19,7 +19,7 @@ class RealVoice :
     public VoiceBase
 {
 public:
-    void assignDataToBuffer(std::vector<float>& audioData) override;
+    void assignDataToBuffer(std::vector<float>& audioData, bool loop) override;
     void clearBuffer() override;
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
     void setIsActive(bool iActive);
