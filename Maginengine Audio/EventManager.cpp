@@ -36,14 +36,14 @@ void EventManager::init()
 	bigWave_Event->Add(bigWave_FullSound_Track); // add a Track to an Event
 	bigWave_Asset.loadFile("assets/audio/BigWave.wav"); // Load an Audio File
 	bigWave_FullSound_Track->assignAssetToTrack(bigWave_Asset.getAudioData()); // Assign an Audio Asset to a track
-	bigWave_FullSound_Track->setLoop(false);
+	bigWave_FullSound_Track->setLoop(true);
 
 	tree->Add(laserGun_Event);
 	laserGun_Event->Add(laserGun_Charge_Track);
 	trapDoor_Asset.loadFile("assets/audio/TrapDoor.wav");
 	laserGun_Charge_Track->assignAssetToTrack(trapDoor_Asset.getAudioData()); // Assign an Audio Asset to a track
 	laserGun_Charge_Track->setLoop(false);
-	laserGun_Charge_Track->setVolume(0.1f);
+	//laserGun_Charge_Track->setVolume(0.1f);
 	laserGun_Event->Add(laserGun_Trigger_Track);
 	laserGun_Trigger_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
 	laserGun_Event->Add(laserGun_Release_Track);
@@ -59,6 +59,7 @@ void EventManager::init()
 	smilyDay_Event->Add(smilyDay_Track);
 	smilyDay_Asset.loadFile("assets/audio/SmileyDayToYa.wav");
 	smilyDay_Track->assignAssetToTrack(smilyDay_Asset.getAudioData());
+	smilyDay_Track->setLoop(true);
 
 	TreeStructure(tree);
 
@@ -68,10 +69,10 @@ void EventManager::init()
 	// Test runs
 	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
 	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
 	std::this_thread::sleep_for(std::chrono::seconds(120));
 	//laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));

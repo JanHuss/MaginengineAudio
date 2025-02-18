@@ -29,16 +29,18 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
         memset(outputBuffer, 0, frameCount * channels * sizeof(float));
         return;
     }
+
+    // number of frames to hit the expected max/min fade
+    const ma_uint32 fadeDuration = 256; 
+
     ma_uint32 i = 0;
     for (; i < frameCount; ++i)
     {
-        //float sample = 0.0f;
         float sampleLeft = 0.0f;
         float sampleRight = 0.0f;
         
         if (playHead < buffer.size())
         {
-            // sample = buffer[playHead++];
             if (channels == 1)
             {
                 float sample = buffer[playHead++];
@@ -62,14 +64,26 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
             else
             {
                 setIsActive(false);
+                hasFadedIn = false;
                 std::cout << "set Is active is false" << std::endl;
                 break;
             }
         }
 
-        
-        outputBuffer[i * 2] += sampleLeft;
-        outputBuffer[i * 2 + 1] += sampleRight;
+        // doesn't need to fade in again if is looping
+        if (playHead > fadeDuration)
+            hasFadedIn = true;
+
+        // Calculate the fade in/out
+        float fadeFactor = 1.0f;
+        if (!hasFadedIn && playHead < fadeDuration)
+            fadeFactor = (1.0f - cosf(3.14159265359 * playHead / fadeDuration)) * 0.5f;
+        else if (!isLooping && buffer.size() - playHead < fadeDuration)
+            fadeFactor = (1.0f - cosf(3.14159265359 * (buffer.size() - playHead) / fadeDuration)) * 0.5f;
+
+        // pass fade, left and right samples to output buffer
+        outputBuffer[i * 2] += sampleLeft * fadeFactor;
+        outputBuffer[i * 2 + 1] += sampleRight * fadeFactor;
     }
 }
 
