@@ -18,6 +18,7 @@ protected:
 	Component* _parent;
 	// not sure this is the right thing to do. delete if causing issues
 	std::vector<float> audioData;
+	bool isLooping = false;
 
 public:
 	virtual ~Component(){};
@@ -45,4 +46,7 @@ public:
 	virtual void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) = 0;
 
 	virtual std::string Operation() const = 0;
+
+	virtual void setLoop(bool loop){isLooping = loop;}
+	virtual bool getLoop(){return isLooping;}
 };

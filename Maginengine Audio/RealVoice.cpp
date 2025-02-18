@@ -4,6 +4,7 @@ void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
 {
     //std::clog << "Voice -> audio data size in voice: " << audioData.size() << std::endl;
     buffer = audioData;
+    isLooping = loop;
     playHead = 0;
     setIsActive(true);
     if (!buffer.empty())
@@ -67,8 +68,8 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
         }
 
         
-        outputBuffer[i * 2] = sampleLeft;
-        outputBuffer[i * 2 + 1] = sampleRight;
+        outputBuffer[i * 2] += sampleLeft;
+        outputBuffer[i * 2 + 1] += sampleRight;
     }
 }
 

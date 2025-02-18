@@ -49,16 +49,6 @@ std::vector<float> Leaf::getAudioData()
     return audioData;
 }
 
-void Leaf::setLoop(bool loop)
-{
-    isLooping = loop;
-}
-
-bool Leaf::getLoop()
-{
-    return isLooping;
-}
-
 void Leaf::play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool)
 {
     if (!realVoicePool.getAllVoicesActive())
