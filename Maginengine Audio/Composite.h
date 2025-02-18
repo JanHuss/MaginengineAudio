@@ -29,6 +29,7 @@ public:
 
     std::string Operation() const override;
     
-
+    void setVolume(float vol) override {}
+    void adjustVolume() override {}
 };
 

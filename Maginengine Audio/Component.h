@@ -47,6 +47,10 @@ public:
 
 	virtual std::string Operation() const = 0;
 
+	virtual void setVolume(float vol) = 0;
+
 	virtual void setLoop(bool loop){isLooping = loop;}
 	virtual bool getLoop(){return isLooping;}
+
+	virtual void adjustVolume() = 0;
 };

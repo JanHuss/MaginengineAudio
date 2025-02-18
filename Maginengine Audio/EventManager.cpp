@@ -43,6 +43,7 @@ void EventManager::init()
 	trapDoor_Asset.loadFile("assets/audio/TrapDoor.wav");
 	laserGun_Charge_Track->assignAssetToTrack(trapDoor_Asset.getAudioData()); // Assign an Audio Asset to a track
 	laserGun_Charge_Track->setLoop(false);
+	laserGun_Charge_Track->setVolume(0.1f);
 	laserGun_Event->Add(laserGun_Trigger_Track);
 	laserGun_Trigger_Track->assignAssetToTrack(bigWave_Asset.getAudioData());
 	laserGun_Event->Add(laserGun_Release_Track);
@@ -70,7 +71,7 @@ void EventManager::init()
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
+	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
 	std::this_thread::sleep_for(std::chrono::seconds(120));
 	//laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(5));

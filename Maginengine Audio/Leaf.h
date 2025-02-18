@@ -35,13 +35,16 @@ public:
     void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
     void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
 
-    // low-level interface
+    void setVolume(float vol) override;
 
+    // low-level interface
+    void adjustVolume() override;
     
 private:
     std::vector<float> audioData;
     enum VOICETYPE {REAL, VIRTUAL};
     VOICETYPE voiceType;
+    float volume;
     bool isLooping;
 
 };

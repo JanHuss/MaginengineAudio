@@ -83,3 +83,15 @@ void Leaf::stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool
 
     
 }
+
+void Leaf::setVolume(float vol)
+{
+    volume = vol;
+    adjustVolume();
+}
+
+void Leaf::adjustVolume()
+{
+    for (auto& sample : audioData)
+        sample *= volume;
+}
