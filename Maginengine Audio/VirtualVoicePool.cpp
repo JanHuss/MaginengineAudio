@@ -2,7 +2,7 @@
 
 VirtualVoicePool::VirtualVoicePool()
 {
-	 virtualVoicesCurrent = 2;
+	 virtualVoicesCurrent = 1;
 
     for(int i = 0; i < virtualVoicesCurrent; i++)
 	    virtualVoices.push_back(new VirtualVoice);
@@ -18,35 +18,53 @@ VirtualVoicePool* VirtualVoicePool::getInstance()
 
 VirtualVoice* VirtualVoicePool::getVirtualVoice()
 {
-    if (!virtualVoices.empty())
+    for(int i = 0; i < virtualVoices.size(); i++)
 	{
-		//std::cout << "Creating new resource." << std::endl;
-		//return new Resource;
-		std::cout << "VirtualVoicePool -> Reusing existing \"Virtual Voice\" from pool." << std::endl;
-		VirtualVoice* virtualVoice = virtualVoices.front();
-		virtualVoices.pop_front();
-		std::cout << "VirtualVoicePool -> \"Virtual Voice\" pool size: " << virtualVoices.size() << std::endl;
-		return virtualVoice;
-	}
-	else
+		std::clog << "VirtualVoicePool -> getVirtualVoice() -> size " << virtualVoices.size()<< std::endl;
+		if (!virtualVoices[i]->getIsActive())
+		{
+			virtualVoicePoolIndex = i;
+			break;
+		}
+		else if (i+1 == virtualVoices.size() && virtualVoices[i]->getIsActive())
+		{
+			//realVoices[i]->setPlayHead(0);
+			setAllVoicesActive(true);
+			std::clog << "VirtualVoicePool -> All \"Virtual Voices\" are active." << std::endl;
+		}
+		if (getAllVoicesActive())
+		{
+			virtualVoices.push_back(new VirtualVoice);
+			std::clog << "VirtualVoicePool -> No Virtual Voices available. creating new Virtual Voice" << std::endl;
+		}
+	}	
+	if (!virtualVoices[virtualVoicePoolIndex]->getIsActive())
 	{
-		std::cout << "VirtualVoicePool -> VoicePool is empty. Creating new \"Virtual Voice\" object." << std::endl;
-		virtualVoices.push_back(new VirtualVoice);
-		std::cout << "VirtualVoicePool -> New \"Virtual Voice\" added to pool. Current Pool size: " << virtualVoices.size() << std::endl;
-		VirtualVoice* virtualVoice = virtualVoices.front();
-		virtualVoices.pop_front();
-		std::cout << "VirtualVoicePool -> New \"Virtual Voice\" assigned. Current Pool size: " << virtualVoices.size() << std::endl;
-		return virtualVoice;
+		virtualVoices[virtualVoicePoolIndex]->setIsActive(true);
+		std::clog << "VirtualVoicePool -> Setting a Virtual Voice to: Active" << std::endl;
+		return virtualVoices[virtualVoicePoolIndex];
 	}
+	
+	return nullptr;
 }
 
-void VirtualVoicePool::returnVirtualVoice(VirtualVoice* object)
+std::vector<VirtualVoice*> VirtualVoicePool::getVirtualVoicePool()
 {
-	object->clearBuffer();
-	virtualVoices.push_back(object);
+	return virtualVoices;
 }
 
-std::list<VirtualVoice*> VirtualVoicePool::getVirtualVoicePoolSize()
+void VirtualVoicePool::setAllVoicesActive(bool aVActive)
 {
-    return virtualVoices;
+	allVoicesActive = aVActive;
+}
+
+bool VirtualVoicePool::getAllVoicesActive()
+{
+	for (auto voice : virtualVoices)
+	{
+		if (!voice->getIsActive())
+			return false;
+	}
+	return true;
+	//return allVoicesActive;
 }

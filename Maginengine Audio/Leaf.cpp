@@ -14,19 +14,22 @@ void Leaf::assignAssetToTrack(std::vector<float> asset)
 
 void Leaf::assignTrackToRealVoice(RealVoicePool& realVoicePool)
 {
-        RealVoice* realVoice = realVoicePool.getRealVoice();
-        if (realVoice)
-        {
-            std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
-            realVoice->assignDataToBuffer(audioData, getLoop());
-        }
+    RealVoice* realVoice = realVoicePool.getRealVoice();
+    if (realVoice)
+    {
+        std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
+        realVoice->assignDataToBuffer(audioData, getLoop());
+    }
 }
 
 void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
 {
-    std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
     VirtualVoice* virtualVoice = virtualVoicePool.getVirtualVoice();
-    virtualVoice->assignDataToBuffer(audioData, getLoop());
+    if (virtualVoice)
+    {
+        std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
+        virtualVoice->assignDataToBuffer(audioData, getLoop());
+    }
 }
 
 void Leaf::removeTrackFromRealVoice(RealVoicePool& realVoicePool)

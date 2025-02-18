@@ -17,12 +17,13 @@
 class RealVoicePool
 {
 private:
-	//std::list<RealVoice*> realVoices;
 	std::vector<RealVoice*> realVoices;
 	int maxRealVoices;
 	static RealVoicePool* instance;
 	bool allVoicesActive;
 	int realVoicePoolIndex;
+
+	// !!! Keep Private! is singleton !!!
 	RealVoicePool();
 
 public:

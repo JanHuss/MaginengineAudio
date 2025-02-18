@@ -2,7 +2,7 @@
 
 RealVoicePool::RealVoicePool()
 {
-	maxRealVoices = 2;
+	maxRealVoices = 1;
 	for(int i = 0; i < maxRealVoices; i++)
 	realVoices.push_back(new RealVoice);
 	setAllVoicesActive(false);

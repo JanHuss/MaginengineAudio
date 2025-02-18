@@ -22,13 +22,16 @@ public:
 	void assignDataToBuffer(std::vector<float>& audioData, bool loop) override;
     void clearBuffer() override;
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
-    
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
+
+    void setIsActive(bool iActive);
+    bool getIsActive();
 
 private:
     std::vector<float> buffer;
     size_t playHead = 0;
     bool isActive = false;
+    bool isLooping = false;
 };
 

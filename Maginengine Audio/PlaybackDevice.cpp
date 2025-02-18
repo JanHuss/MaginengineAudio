@@ -16,9 +16,16 @@ void PlaybackDevice::data_callback(ma_device* pDevice, void* pOutput, const void
     float* outputbuffer = static_cast<float*>(pOutput);
     memset(outputbuffer, 0, frameCount * sizeof(float) * pDevice->playback.channels);
     // create a voice pointer to get a voice within the playback device class
-    std::vector<RealVoice*> voices = playbackDevice->realVoicePool->getRealVoicePool();
+    std::vector<RealVoice*> realVoices = playbackDevice->realVoicePool->getRealVoicePool();
 
-    for (auto voice : voices)
+    for (auto voice : realVoices)
+    {
+       if (voice && voice->getIsActive())
+           voice->processAudio(outputbuffer, frameCount);       
+    }
+    std::vector<VirtualVoice*> virtualVoices = playbackDevice->virtualVoicePool->getVirtualVoicePool();
+    
+    for (auto voice : virtualVoices)
     {
        if (voice && voice->getIsActive())
            voice->processAudio(outputbuffer, frameCount);       

@@ -14,15 +14,21 @@
 class VirtualVoicePool
 {
 private:
-	std::list<VirtualVoice*> virtualVoices;
+	std::vector<VirtualVoice*> virtualVoices;
 	int virtualVoicesCurrent;
 	static VirtualVoicePool* instance;
+	bool allVoicesActive;
+	int virtualVoicePoolIndex;
+
+	// !!! Keep Private! is singleton !!!
 	VirtualVoicePool();
 
 public:
 	static VirtualVoicePool* getInstance();
 	VirtualVoice* getVirtualVoice();
 	void returnVirtualVoice(VirtualVoice* object);
-	std::list<VirtualVoice*> getVirtualVoicePoolSize();
+	std::vector<VirtualVoice*> getVirtualVoicePool();
+	void setAllVoicesActive(bool aVActive);
+	bool getAllVoicesActive();
 };
 

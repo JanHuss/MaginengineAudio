@@ -8,6 +8,7 @@
 #include "RealVoice.h"
 #include "VirtualVoice.h"
 #include "RealVoicePool.h"
+#include "VirtualVoicePool.h"
 
 // Libraries
 #include <iostream>
@@ -25,6 +26,7 @@ public:
     ma_device device;
     ma_device_config deviceConfig;
     RealVoicePool* realVoicePool = RealVoicePool::getInstance();
+    VirtualVoicePool* virtualVoicePool = VirtualVoicePool::getInstance();
 
 private:
     int channels = 2;
