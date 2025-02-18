@@ -47,17 +47,7 @@ int PlaybackDevice::init()
     return true;
 }
 
-//RealVoice* PlaybackDevice::getRealVoice()
-//{
-//	return realVoice;
-//}
-
 RealVoicePool* PlaybackDevice::getRealVoices()
 {
     return realVoicePool;
 }
-
-//VirtualVoice* PlaybackDevice::getVirtualVoice()
-//{
-//	return virtualVoice;
-//}

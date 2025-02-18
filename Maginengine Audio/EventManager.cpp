@@ -59,7 +59,7 @@ void EventManager::init()
 	smilyDay_Event->Add(smilyDay_Track);
 	smilyDay_Asset.loadFile("assets/audio/SmileyDayToYa.wav");
 	smilyDay_Track->assignAssetToTrack(smilyDay_Asset.getAudioData());
-	smilyDay_Track->setLoop(true);
+	//smilyDay_Track->setLoop(true);
 
 	TreeStructure(tree);
 
