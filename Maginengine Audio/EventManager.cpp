@@ -74,18 +74,44 @@ void EventManager::init()
 	std::cout << "----------------------------------------------------" << std::endl;
 
 	// Test runs
-	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
+	//smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
-	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
-	laserGun_Release_Track->play(*realVoicePool, *virtualVoicePool);
-	//std::this_thread::sleep_for(std::chrono::seconds(5));
-	footsteps_wood_Track1->play(*realVoicePool, *virtualVoicePool);
-	//std::this_thread::sleep_for(std::chrono::seconds(5));
-	//bigWave_FullSound_Track->stop(*realVoicePool);
-	std::this_thread::sleep_for(std::chrono::seconds(120));
+	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
+	//
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
+	
+	//// maxing out the voice pool to see if the virtual voices kick in
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+
+	//std::this_thread::sleep_for(std::chrono::seconds(120));
+}
+
+void EventManager::update(float dt)
+{
+	std::clog << "Update -> delta time test" << std::endl;
 }
 
 void EventManager::TreeStructure(Component* component)

@@ -2,7 +2,7 @@
 
 RealVoicePool::RealVoicePool()
 {
-	maxRealVoices = 1;
+	maxRealVoices = 10;
 	for(int i = 0; i < maxRealVoices; i++)
 	realVoices.push_back(new RealVoice);
 	setAllVoicesActive(false);
@@ -20,7 +20,7 @@ RealVoice* RealVoicePool::getRealVoice()
 {
 	for(int i = 0; i < realVoices.size(); i++)
 	{
-		std::clog << "RealVoicePool -> getRealVoice() -> realVoices.size(): " << realVoices.size()<< std::endl;
+		//std::clog << "RealVoicePool -> getRealVoice() -> realVoices.size(): " << realVoices.size()<< std::endl;
 		if (!realVoices[i]->getIsActive())
 		{
 			realVoicePoolIndex = i;

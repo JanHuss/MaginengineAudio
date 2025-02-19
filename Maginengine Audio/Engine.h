@@ -13,6 +13,7 @@
 
 // libraries
 #include <iostream>
+#include <chrono>
 
 class Engine
 {
@@ -31,5 +32,8 @@ private:
 
 	PlaybackDevice playbackDevice;
 	EventManager eventManager;
+
+	float deltaTime;
+	std::chrono::steady_clock::time_point lastUpdate;
 };
 

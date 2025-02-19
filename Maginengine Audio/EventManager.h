@@ -24,6 +24,7 @@ public:
 	~EventManager();
 
 	void init();
+	void update(float dt);
 
 	void TreeStructure(Component* component);
     void TreeStructure(Component* component1, Component* component2);

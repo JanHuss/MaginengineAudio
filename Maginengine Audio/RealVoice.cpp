@@ -7,8 +7,8 @@ void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
     isLooping = loop;
     playHead = 0;
     setIsActive(true);
-    if (!buffer.empty())
-        std::clog << "RealVoice -> Buffer not empty. Audio data assigned to Buffer" << std::endl;
+    //if (!buffer.empty())
+    //    std::clog << "RealVoice -> Buffer not empty. Audio data assigned to Buffer" << std::endl;
     std::clog << "RealVoice -> Buffer size: " << buffer.size() << std::endl;
 }
 

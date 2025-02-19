@@ -37,4 +37,13 @@ int Engine::init()
 void Engine::run()
 {
 	//std::cout << "Engine -> run() called()" << std::endl;
+	while(true)
+	{
+		// calculating delta time
+		auto now = std::chrono::steady_clock::now();
+		deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastUpdate).count() / 1000000.0f;
+		lastUpdate = now;
+
+		eventManager.update(deltaTime);
+	}
 }

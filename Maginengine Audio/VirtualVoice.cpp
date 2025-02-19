@@ -1,7 +1,7 @@
 #include "VirtualVoice.h"
 
-void VirtualVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop) // !! might be able to remove "buffer" var as not needed in virtual voice
-{																				// !! consider creating seperate function for this as is not assigning to buffer
+void VirtualVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
+{																			
 	buffer = audioData;
 	isLooping = loop;
 	playHead = 0;
