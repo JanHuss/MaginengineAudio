@@ -1,5 +1,6 @@
 #include "RealVoice.h"
 
+
 void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
 {
     //std::clog << "Voice -> audio data size in voice: " << audioData.size() << std::endl;

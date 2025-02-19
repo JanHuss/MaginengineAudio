@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Handlers">
       <UniqueIdentifier>{737220a1-696d-47d9-b241-13be3b48521e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Observer">
+      <UniqueIdentifier>{56e8b1dd-07f4-453f-a67d-f63098f7246f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Maginengine Audio.cpp">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="PlaybackDevice.h">
       <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files\Observer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

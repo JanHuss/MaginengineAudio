@@ -9,6 +9,7 @@
 #include "miniaudio.h"
 #include "VoiceBase.h"
 
+
 // Libraries
 #include <vector>
 #include <iostream>
@@ -27,6 +28,8 @@ public:
 
     void setIsActive(bool iActive);
     bool getIsActive();
+
+   // void passTrackToVoice(Leaf* leaf) override;
 
 private:
     std::vector<float> buffer;

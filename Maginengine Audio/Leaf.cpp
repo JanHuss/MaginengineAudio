@@ -29,6 +29,7 @@ void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
     {
         std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
         virtualVoice->assignDataToBuffer(audioData, getLoop());
+        // pass through "this" as a pointer into virtualVoice
     }
 }
 
@@ -97,4 +98,19 @@ void Leaf::adjustVolume()
 {
     for (auto& sample : audioData)
         sample *= volume;
+}
+
+void Leaf::setCurrentVoice(VoiceBase* voice)
+{
+    currentVoice = voice;
+}
+
+VoiceBase* Leaf::getCurrentVoice()
+{
+    return currentVoice;
+}
+
+void Leaf::onVoiceSwitched(VoiceBase* newVoice)
+{
+  setCurrentVoice(newVoice);
 }

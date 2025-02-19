@@ -57,3 +57,7 @@ bool VirtualVoice::getIsActive()
 {
 	return isActive;
 }
+
+//void VirtualVoice::passTrackToVoice(Leaf* leaf)
+//{
+//}

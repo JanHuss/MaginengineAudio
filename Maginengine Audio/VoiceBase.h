@@ -22,5 +22,7 @@ public:
     
     // has to be removed. just used for testing what the buffer is looking like in callback
     virtual std::vector<float> getBuffer() = 0;
+
+    //virtual void passTrackToVoice(Leaf* leaf) = 0;
 };
 

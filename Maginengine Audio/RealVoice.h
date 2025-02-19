@@ -31,6 +31,8 @@ public:
     std::vector<float> getBuffer() override;
     void transferDataFrom(VirtualVoice* vVoice);
 
+   // void passTrackToVoice(Leaf* leaf) override{};
+
 private:
     std::vector<float> buffer;
     size_t playHead = 0;

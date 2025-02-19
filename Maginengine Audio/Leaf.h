@@ -8,6 +8,7 @@
 #include "Component.h"
 #include "RealVoicePool.h"
 #include "VirtualVoicePool.h"
+#include "IObserver.h"
 
 // Libraries
 #include <string>
@@ -16,7 +17,8 @@
 
 
 class Leaf :
-    public Component
+    public Component,    
+        public IObserver
 {
 public:
     std::string Operation() const override; 
@@ -39,6 +41,11 @@ public:
 
     // low-level interface
     void adjustVolume() override;
+
+    void setCurrentVoice(VoiceBase* voice);
+    VoiceBase* getCurrentVoice();
+
+    void onVoiceSwitched(VoiceBase* newVoice) override;
     
 private:
     std::vector<float> audioData;
@@ -46,6 +53,7 @@ private:
     VOICETYPE voiceType;
     float volume;
     bool isLooping;
+    VoiceBase* currentVoice = nullptr;
 
 };
 
