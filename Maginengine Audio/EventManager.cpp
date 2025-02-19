@@ -74,16 +74,19 @@ void EventManager::init()
 	std::cout << "----------------------------------------------------" << std::endl;
 
 	// Test runs
-	//smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
-	//std::this_thread::sleep_for(std::chrono::seconds(3));
-	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
-	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
-	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
+	std::this_thread::sleep_for(std::chrono::seconds(5));
+	bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
+	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
 	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
 	//
 	//bigWave_FullSound_Track->play(*realVoicePool, *virtualVoicePool);// passing in this pointer might be wrong ask tomorrow
 	//laserGun_Charge_Track->play(*realVoicePool, *virtualVoicePool);
-	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	//laserGun_Trigger_Track->play(*realVoicePool, *virtualVoicePool);
 	
 	//// maxing out the voice pool to see if the virtual voices kick in
@@ -111,7 +114,26 @@ void EventManager::init()
 
 void EventManager::update(float dt)
 {
-	std::clog << "Update -> delta time test" << std::endl;
+	//std::clog << "Update -> delta time test" << std::endl;
+	
+	// Virtual to Real Voice switch algorithm
+	// for each voice in virtualVoicePool
+	//if (!realVoicePool->getAllVoicesActive())
+	//{
+	//	for (auto voice : virtualVoicePool->getVirtualVoicePool())
+	//	{
+	//		if (voice && voice->getIsActive())
+	//		{
+	//			realVoicePool->getRealVoice()->transferDataFrom(voice);
+	//			voice->setIsActive(false);
+	//		
+	//		
+	//			if (voice->getLeaf())
+	//				voice->getLeaf()->setCurrentVoice(realVoicePool->getRealVoice());
+	//		}
+	//		std::clog << "EventManager -> PROMOTED a Virtual Voice to Real Voice" << std::endl;
+	//	}
+	//}
 }
 
 void EventManager::TreeStructure(Component* component)

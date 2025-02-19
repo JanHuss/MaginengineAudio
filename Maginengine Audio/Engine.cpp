@@ -36,14 +36,41 @@ int Engine::init()
 
 void Engine::run()
 {
-	//std::cout << "Engine -> run() called()" << std::endl;
-	while(true)
+	if (currentState == PLAY)
 	{
-		// calculating delta time
-		auto now = std::chrono::steady_clock::now();
-		deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastUpdate).count() / 1000000.0f;
-		lastUpdate = now;
+		// this mode should be running the engine update to help update the voice
+		// switch check
+		auto lastUpdate = std::chrono::steady_clock::now();
 
-		eventManager.update(deltaTime);
+		while(isRunning)
+		{
+			auto now = std::chrono::steady_clock::now();
+			float deltaTime = std::chrono::duration<float>(now - lastUpdate).count();
+			lastUpdate = now;
+
+			eventManager.update(deltaTime);
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(16));
+		}
+
+
+	}
+	else if (currentState == DEBUG)
+	{
+		// this mode will run the engine just as in PLAY but with a window displaying
+		// the UI elements of the current engine setup
+		std::chrono::steady_clock::time_point lastUpdate;
+		
+
+		//std::cout << "Engine -> run() called()" << std::endl;
+		while(true)
+		{
+			// calculating delta time
+			auto now = std::chrono::steady_clock::now();
+			deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastUpdate).count() / 1000000.0f;
+			lastUpdate = now;
+
+			eventManager.update(deltaTime);
+		}	
 	}
 }
