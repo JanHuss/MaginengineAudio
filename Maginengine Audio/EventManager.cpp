@@ -114,26 +114,8 @@ void EventManager::init()
 
 void EventManager::update(float dt)
 {
+	checkIfRealVoiceAvailable();
 	//std::clog << "Update -> delta time test" << std::endl;
-	
-	// Virtual to Real Voice switch algorithm
-	// for each voice in virtualVoicePool
-	//if (!realVoicePool->getAllVoicesActive())
-	//{
-	//	for (auto voice : virtualVoicePool->getVirtualVoicePool())
-	//	{
-	//		if (voice && voice->getIsActive())
-	//		{
-	//			realVoicePool->getRealVoice()->transferDataFrom(voice);
-	//			voice->setIsActive(false);
-	//		
-	//		
-	//			if (voice->getLeaf())
-	//				voice->getLeaf()->setCurrentVoice(realVoicePool->getRealVoice());
-	//		}
-	//		std::clog << "EventManager -> PROMOTED a Virtual Voice to Real Voice" << std::endl;
-	//	}
-	//}
 }
 
 void EventManager::TreeStructure(Component* component)
@@ -149,6 +131,44 @@ void EventManager::TreeStructure(Component* component1, Component* component2)
 
 	}
 	std::cout << "EventManager -> Result: " << component1->Operation() << std::endl;
+}
+
+void EventManager::subscribeObserver(IObserver* observer)
+{
+	voiceObservers.push_back(observer);
+}
+
+void EventManager::unsubscribeObserver(IObserver* observer)
+{
+
+}
+
+void EventManager::checkIfRealVoiceAvailable()
+{
+	// Virtual to Real Voice switch algorithm
+	if (!realVoicePool->getAllVoicesActive())
+	{
+		for (auto voice : virtualVoicePool->getVirtualVoicePool())
+		{
+			if (voice && voice->getIsActive())
+			{
+				realVoicePool->getRealVoice()->transferDataFrom(voice);
+				voice->setIsActive(false);
+
+				notifyVoiceSwitch(realVoicePool->getRealVoice());
+				std::clog << "EventManager -> PROMOTED a Virtual Voice to Real Voice" << std::endl;
+			}
+		}
+	}
+}
+
+void EventManager::notifyVoiceSwitch(VoiceBase* newVoice)
+{
+	for(auto observer : voiceObservers)
+	{
+		if (observer)
+			observer->onVoiceSwitched(newVoice);
+	}
 }
 
 

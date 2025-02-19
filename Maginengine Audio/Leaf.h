@@ -15,6 +15,7 @@
 #include <vector>
 #include <iostream>
 
+class EventManager;
 
 class Leaf :
     public Component,    

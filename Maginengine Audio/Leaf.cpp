@@ -1,4 +1,5 @@
 #include "Leaf.h"
+#include "EventManager.h"
 
 std::string Leaf::Operation() const
 {
@@ -29,7 +30,8 @@ void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
     {
         std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
         virtualVoice->assignDataToBuffer(audioData, getLoop());
-        // pass through "this" as a pointer into virtualVoice
+        
+       
     }
 }
 
@@ -113,4 +115,5 @@ VoiceBase* Leaf::getCurrentVoice()
 void Leaf::onVoiceSwitched(VoiceBase* newVoice)
 {
   setCurrentVoice(newVoice);
+  std::clog << "Leaf -> Updated current voice after switch." << std::endl;
 }
