@@ -14,8 +14,6 @@
 #include <vector>
 #include <iostream>
 
-class EventManager;
-
 class Leaf :
     public Component
 {
@@ -50,7 +48,8 @@ private:
     VOICETYPE voiceType;
     float volume;
     bool isLooping;
-    VoiceBase* currentVoice = nullptr;
 
+    // think this can be removed
+    VoiceBase* currentVoice = nullptr;
 };
 

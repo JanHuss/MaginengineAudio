@@ -1,5 +1,4 @@
 #include "Leaf.h"
-#include "EventManager.h"
 
 std::string Leaf::Operation() const
 {
@@ -30,7 +29,7 @@ void Leaf::assignTrackToVirtualVoice(VirtualVoicePool& virtualVoicePool)
     {
         std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
         virtualVoice->assignDataToBuffer(audioData, getLoop());
-        
+        // give the virtual voice a reference of the track it is directing to
        
     }
 }
@@ -66,7 +65,7 @@ void Leaf::play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool
     else
     {
         voiceType = VIRTUAL;
-        assignTrackToVirtualVoice(virtualVoicePool);
+        assignTrackToVirtualVoice(virtualVoicePool); // think I need to pass track reference in here as a parameter
         std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
     }
 }

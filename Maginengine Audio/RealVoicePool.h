@@ -31,6 +31,7 @@ public:
 	RealVoice* getRealVoice();
 	void returnRealVoice(RealVoice* object);
 	std::vector<RealVoice*> getRealVoicePool();
+	void checkIfVoiceActive();
 	void setAllVoicesActive(bool aVActive);
 	bool getAllVoicesActive();
 

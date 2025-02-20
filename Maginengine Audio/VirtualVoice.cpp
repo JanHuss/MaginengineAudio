@@ -19,8 +19,8 @@ void VirtualVoice::clearBuffer()
 
 void VirtualVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 {
-	// std::clog << "Virtual Voice -> playhead stuff" << std::endl;
-
+	// std::clog << "Virtual Voice -> process audio" << std::endl;
+	// std::clog << "Virtual Voice -> buffer size: " << buffer.size() << std::endl;
 	for (ma_uint32 i = 0; i < frameCount; ++i)
 	{
 		if (playHead < buffer.size())
@@ -45,7 +45,7 @@ void VirtualVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 
 std::vector<float> VirtualVoice::getBuffer()
 {
-	return std::vector<float>();
+	return buffer;
 }
 
 void VirtualVoice::setIsActive(bool iActive)
@@ -57,6 +57,12 @@ bool VirtualVoice::getIsActive()
 {
 	return isActive;
 }
+
+void VirtualVoice::captureData()
+{
+	std::clog << "VirtualVoice -> Empty Function" << std::endl;
+}
+
 
 //void VirtualVoice::passTrackToVoice(Leaf* leaf)
 //{

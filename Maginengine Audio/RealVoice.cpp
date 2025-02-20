@@ -40,7 +40,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
         float sampleLeft = 0.0f;
         float sampleRight = 0.0f;
         
-        if (playHead < buffer.size())
+        if (getPlayHead() < buffer.size())
         {
             if (channels == 1)
             {
@@ -51,22 +51,23 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
             }
             else if (channels == 2)
             {
-                sampleLeft = buffer[playHead++];
-                sampleRight = buffer[playHead++];
-                //std::clog << "RealVoice -> 2 Channels" << std::endl;
+                    sampleLeft = buffer[playHead++];
+                    sampleRight = buffer[playHead++];
+                    //std::clog << "RealVoice -> 2 Channels" << std::endl;
             }
         }
         else
         {
             // Loop
             if (isLooping)
-                playHead = 0;
+                setPlayHead(0);
             // Stop
             else
             {
-                setIsActive(false);
+                //setIsActive(false);
                 hasFadedIn = false;
-                std::cout << "set Is active is false" << std::endl;
+                clearBuffer();
+                std::cout << "Real Voice -> set Is active is false" << std::endl;
                 break;
             }
         }
@@ -111,4 +112,22 @@ size_t RealVoice::getPlayHead()
 std::vector<float> RealVoice::getBuffer()
 {
     return buffer;
+}
+
+void RealVoice::captureData(VirtualVoice* virtualVoice)
+{
+    std::clog << "RealVoice -> Capturing data test" << std::endl;
+
+    //buffer.resize(virtualVoice->getBuffer().size());
+    //std::clog << "RealVoice -> virtual voice buffer size: " << virtualVoice->getBuffer().size() << std::endl;
+    setPlayHead(virtualVoice->playHead);
+    buffer.resize(virtualVoice->getBuffer().size());
+    buffer = virtualVoice->getBuffer();
+    std::clog << "RealVoice -> data transfer buffer size: " << buffer.size() << std::endl;
+    std::clog << "RealVoice -> play head: " << getPlayHead() << std::endl;
+    isLooping = virtualVoice->isLooping;
+    //hasFadedIn = true;
+    virtualVoice->clearBuffer();
+    setIsActive(true);
+   // virtualVoice->setIsActive(false);
 }

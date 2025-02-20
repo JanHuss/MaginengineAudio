@@ -8,7 +8,7 @@
 // Headers
 #include "miniaudio.h"
 #include "VoiceBase.h"
-
+//#include "Component.h"
 
 // Libraries
 #include <vector>
@@ -28,13 +28,15 @@ public:
 
     void setIsActive(bool iActive);
     bool getIsActive();
-
+    void captureData() override;
    // void passTrackToVoice(Leaf* leaf) override;
 
-private:
-    std::vector<float> buffer;
-    size_t playHead = 0;
-    bool isActive = false;
     bool isLooping = false;
+    size_t playHead = 0;
+
+private:
+    //Component& trackReference;
+    std::vector<float> buffer;
+    bool isActive = false;
 };
 

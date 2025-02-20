@@ -39,10 +39,10 @@ private:
 	Component* tree = new Composite;
 
 	Component* bigWave_Event = new Composite;
-	Component* bigWave_FullSound_Track = new Leaf;
+	Component* bigWave = new Leaf;
 
 	Component* laserGun_Event = new Composite;
-	Component* laserGun_Charge_Track = new Leaf;
+	Component* trapDoor = new Leaf;
 	Component* laserGun_Trigger_Track = new Leaf;
 	Component* laserGun_Release_Track = new Leaf;
 

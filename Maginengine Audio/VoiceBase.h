@@ -6,6 +6,7 @@
 
 // Headers
 #include "miniaudio.h"
+//#include "Component.h"
 
 // Libraries
 #include <vector>
@@ -22,7 +23,10 @@ public:
     
     // has to be removed. just used for testing what the buffer is looking like in callback
     virtual std::vector<float> getBuffer() = 0;
-
+    
+    virtual void captureData() {};
+    /*virtual void setTrackReference(Component& track) = 0;
+    virtual Component& getTrackReference() = 0;*/
     //virtual void passTrackToVoice(Leaf* leaf) = 0;
 };
 

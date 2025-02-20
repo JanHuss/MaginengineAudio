@@ -2,7 +2,7 @@
 
 RealVoicePool::RealVoicePool()
 {
-	maxRealVoices = 10;
+	maxRealVoices = 2;
 	for(int i = 0; i < maxRealVoices; i++)
 	realVoices.push_back(new RealVoice);
 	setAllVoicesActive(false);
@@ -18,21 +18,7 @@ RealVoicePool* RealVoicePool::getInstance()
 
 RealVoice* RealVoicePool::getRealVoice()
 {
-	for(int i = 0; i < realVoices.size(); i++)
-	{
-		//std::clog << "RealVoicePool -> getRealVoice() -> realVoices.size(): " << realVoices.size()<< std::endl;
-		if (!realVoices[i]->getIsActive())
-		{
-			realVoicePoolIndex = i;
-			break;
-		}
-		else if (i+1 == realVoices.size() && realVoices[i]->getIsActive())
-		{
-			//realVoices[i]->setPlayHead(0);
-			setAllVoicesActive(true);
-			std::clog << "RealVoicePool -> All \"Real Voices\" are active." << std::endl;
-		}
-	}	
+	checkIfVoiceActive();
 	if (!realVoices[realVoicePoolIndex]->getIsActive())
 	{
 		realVoices[realVoicePoolIndex]->setIsActive(true);
@@ -53,6 +39,25 @@ void RealVoicePool::returnRealVoice(RealVoice* object)
 std::vector<RealVoice*> RealVoicePool::getRealVoicePool()
 {
 	return realVoices;
+}
+
+void RealVoicePool::checkIfVoiceActive()
+{
+	for(int i = 0; i < realVoices.size(); i++)
+	{
+		//std::clog << "RealVoicePool -> getRealVoice() -> realVoices.size(): " << realVoices.size()<< std::endl;
+		if (!realVoices[i]->getIsActive())
+		{
+			realVoicePoolIndex = i;
+			break;
+		}
+		else if (i+1 == realVoices.size() && realVoices[i]->getIsActive())
+		{
+			//realVoices[i]->setPlayHead(0);
+			setAllVoicesActive(true);
+			std::clog << "RealVoicePool -> All \"Real Voices\" are active." << std::endl;
+		}
+	}	
 }
 
 void RealVoicePool::setAllVoicesActive(bool aVActive)
