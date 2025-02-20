@@ -11,7 +11,6 @@
 #include "RealVoicePool.h"
 #include "VirtualVoicePool.h"
 #include "PlaybackDevice.h"
-#include "IObserver.h"
 
 // libraries
 #include <iostream>
@@ -30,12 +29,8 @@ public:
 	void TreeStructure(Component* component);
     void TreeStructure(Component* component1, Component* component2);
 
-	// Observer Pattern for Voices
-	void subscribeObserver(IObserver* observer);
-	void unsubscribeObserver(IObserver* observer);
-
 	void checkIfRealVoiceAvailable();
-	void notifyVoiceSwitch(VoiceBase* newVoice);
+
 
 private:
 	PlaybackDevice playbackDevice;
@@ -69,9 +64,6 @@ private:
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
 	VirtualVoicePool* virtualVoicePool = VirtualVoicePool::getInstance();
-
-	// Observer for Voices
-	std::vector<IObserver*> voiceObservers;
 
 	
 };

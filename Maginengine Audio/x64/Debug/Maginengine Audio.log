@@ -1,5 +1,10 @@
-﻿  EventManager.cpp
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(41,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'EventManager.cpp')
+﻿  Leaf.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(39,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Leaf.cpp')
   
+  Maginengine Audio.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(39,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'Maginengine%20Audio.cpp')
+  
+  Generating Code...
   Maginengine Audio.vcxproj -> D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe

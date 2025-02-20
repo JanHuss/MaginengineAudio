@@ -145,7 +145,6 @@
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
-    <ClInclude Include="IObserver.h" />
     <ClInclude Include="Leaf.h" />
     <ClInclude Include="miniaudio.h" />
     <ClInclude Include="PlaybackDevice.h" />

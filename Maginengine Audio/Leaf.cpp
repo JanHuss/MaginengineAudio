@@ -111,9 +111,3 @@ VoiceBase* Leaf::getCurrentVoice()
 {
     return currentVoice;
 }
-
-void Leaf::onVoiceSwitched(VoiceBase* newVoice)
-{
-  setCurrentVoice(newVoice);
-  std::clog << "Leaf -> Updated current voice after switch." << std::endl;
-}

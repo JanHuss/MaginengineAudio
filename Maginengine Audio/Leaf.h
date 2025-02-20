@@ -8,7 +8,6 @@
 #include "Component.h"
 #include "RealVoicePool.h"
 #include "VirtualVoicePool.h"
-#include "IObserver.h"
 
 // Libraries
 #include <string>
@@ -18,8 +17,7 @@
 class EventManager;
 
 class Leaf :
-    public Component,    
-        public IObserver
+    public Component
 {
 public:
     std::string Operation() const override; 
@@ -45,8 +43,6 @@ public:
 
     void setCurrentVoice(VoiceBase* voice);
     VoiceBase* getCurrentVoice();
-
-    void onVoiceSwitched(VoiceBase* newVoice) override;
     
 private:
     std::vector<float> audioData;

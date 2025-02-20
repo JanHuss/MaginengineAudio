@@ -133,16 +133,6 @@ void EventManager::TreeStructure(Component* component1, Component* component2)
 	std::cout << "EventManager -> Result: " << component1->Operation() << std::endl;
 }
 
-void EventManager::subscribeObserver(IObserver* observer)
-{
-	voiceObservers.push_back(observer);
-}
-
-void EventManager::unsubscribeObserver(IObserver* observer)
-{
-
-}
-
 void EventManager::checkIfRealVoiceAvailable()
 {
 	// Virtual to Real Voice switch algorithm
@@ -152,23 +142,13 @@ void EventManager::checkIfRealVoiceAvailable()
 		{
 			if (voice && voice->getIsActive())
 			{
-				realVoicePool->getRealVoice()->transferDataFrom(voice);
+				//realVoicePool->getRealVoice()->transferDataFrom(voice);
 				voice->setIsActive(false);
 
-				notifyVoiceSwitch(realVoicePool->getRealVoice());
+				//notifyVoiceSwitch(realVoicePool->getRealVoice());
 				std::clog << "EventManager -> PROMOTED a Virtual Voice to Real Voice" << std::endl;
 			}
 		}
 	}
 }
-
-void EventManager::notifyVoiceSwitch(VoiceBase* newVoice)
-{
-	for(auto observer : voiceObservers)
-	{
-		if (observer)
-			observer->onVoiceSwitched(newVoice);
-	}
-}
-
 
