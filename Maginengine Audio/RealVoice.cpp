@@ -112,13 +112,3 @@ std::vector<float> RealVoice::getBuffer()
 {
     return buffer;
 }
-
-void RealVoice::transferDataFrom(VirtualVoice* vVoice)
-{
-    //buffer = vVoice->getBuffer();
-    //setPlayHead(vVoice->getPlayHead());
-    //isLooping = vVoice->getIsLooping();
-    //std::clog << "Real Voice -> buffer size: " << buffer.size() << std::endl;
-
-    setIsActive(true);
-}

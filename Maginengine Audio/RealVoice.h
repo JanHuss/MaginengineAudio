@@ -8,7 +8,6 @@
 // Headers
 #include "miniaudio.h"
 #include "VoiceBase.h"
-#include "VirtualVoice.h"
 
 // Libraries
 #include <vector>
@@ -29,7 +28,6 @@ public:
     size_t getPlayHead();
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
-    void transferDataFrom(VirtualVoice* vVoice);
 
    // void passTrackToVoice(Leaf* leaf) override{};
 

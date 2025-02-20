@@ -24,9 +24,6 @@ public:
 	int init();
 	void run();
 
-	enum CURRENTSTATE {DEBUG, PLAY};
-	CURRENTSTATE currentState;
-
 private:
 	// needs to be refactored. shouldn't be passing this through playback
 	// just for test purposes
@@ -37,6 +34,6 @@ private:
 	EventManager eventManager;
 
 	float deltaTime;
-	bool isRunning;
+	std::chrono::steady_clock::time_point lastUpdate;
 };
 
