@@ -15,6 +15,7 @@
 #include <iostream>
 #include <algorithm>
 #include <ostream>
+#include <atomic>
 
 class VirtualVoice : 
     public VoiceBase
@@ -32,7 +33,7 @@ public:
    // void passTrackToVoice(Leaf* leaf) override;
 
     bool isLooping = false;
-    size_t playHead = 0;
+    std::atomic<size_t> playHead = 0;
 
 private:
     //Component& trackReference;

@@ -16,6 +16,8 @@
 #include <iostream>
 #include <algorithm>
 #include <ostream>
+#include <atomic>
+#include <mutex>
 
 class RealVoice : 
     public VoiceBase
@@ -31,10 +33,10 @@ public:
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
     void captureData(VirtualVoice* vVoice);
-
+    std::mutex dataTransferMutex;
 private:
     std::vector<float> buffer;
-    size_t playHead = 0;
+    std::atomic<size_t> playHead {0};
     bool isActive = false;
     int channels = 2;
     int pan = 0.5f;

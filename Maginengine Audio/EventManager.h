@@ -41,25 +41,24 @@ private:
 	Component* bigWave_Event = new Composite;
 	Component* bigWave = new Leaf;
 
-	Component* laserGun_Event = new Composite;
+	Component* trapDoor_Event = new Composite;
 	Component* trapDoor = new Leaf;
-	Component* laserGun_Trigger_Track = new Leaf;
-	Component* laserGun_Release_Track = new Leaf;
-
-	Component* footsteps_wood_Event = new Composite;
-	Component* footsteps_wood_Track1 = new Leaf;
-	Component* footsteps_wood_Track2 = new Leaf;
-	Component* footsteps_wood_Track3 = new Leaf;
-	Component* footsteps_wood_Track4 = new Leaf;
-	Component* footsteps_wood_Track5 = new Leaf;
 
 	Component* smilyDay_Event = new Composite;
 	Component* smilyDay_Track = new Leaf;
+
+	Component* janVoice_Event = new Composite;
+	Component* janVoice_Track = new Leaf;
+
+	Component* thisIsMyVoice_Event = new Composite;
+	Component* thisIsMyVoice_Track = new Leaf;
 
 	// Assets
 	Asset bigWave_Asset;
 	Asset trapDoor_Asset;
 	Asset smilyDay_Asset;
+	Asset janVoice_Asset;
+	Asset thisIsMyVoice_Asset;
 
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
