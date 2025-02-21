@@ -81,10 +81,11 @@ void EventManager::init()
 	std::cout << "big wave - trap door - this is my voice - jan voice-" << std::endl;
 
 	std::this_thread::sleep_for(std::chrono::seconds(1));
-	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	bigWave->play(*realVoicePool, *virtualVoicePool);
 	trapDoor->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(2));
 	thisIsMyVoice_Track->play(*realVoicePool, *virtualVoicePool);
+	std::this_thread::sleep_for(std::chrono::seconds(3));
 	janVoice_Track->play(*realVoicePool, *virtualVoicePool);
 
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -148,7 +149,7 @@ void EventManager::checkIfRealVoiceAvailable()
 						realVoicePool->checkIfVoiceActive();
 						//realVoicePool->setAllVoicesActive(true);
 						//realVoicePool->getRealVoice();
-						virtualVoice->setIsActive(false);
+						//virtualVoice->setIsActive(false);
 						std::clog << "EventManager -> PROMOTED a Virtual Voice to Real Voice" << std::endl;
 						break;
 					}

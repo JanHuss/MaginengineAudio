@@ -27,6 +27,18 @@ void VirtualVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		size_t threadPlayhead = playHead.load();
 		if (threadPlayhead < buffer.size())
 		{
+			//if (channels == 1)
+            //{
+            //    threadPlayhead++;
+            //    playHead.store(threadPlayhead);
+            //}
+            //else if (channels == 2)
+            //{
+            //    threadPlayhead++;
+            //    threadPlayhead++;
+            //    playHead.store(threadPlayhead);
+            //    
+            //}
 			threadPlayhead++;
 			//std::clog << "Virtual Voice playhead: " << playHead << std::endl;
 			playHead.store(threadPlayhead);

@@ -39,5 +39,6 @@ private:
     //Component& trackReference;
     std::vector<float> buffer;
     bool isActive = false;
+    int channels = 2;
 };
 
