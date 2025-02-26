@@ -27,8 +27,6 @@ Contains transport controls for assigned Asset
 - **Real Voice:** Handles the processing of audio data to the “**PlaybackDevice**”
 - **Virtual Voice: ** Handles the playhead position without processing audio to reduce memory
 - **VoicePool**: Both **Real** and **Virtual** Voices are handled by their designated Object Pools
- 
----
 
 ## Engine Structure
 
