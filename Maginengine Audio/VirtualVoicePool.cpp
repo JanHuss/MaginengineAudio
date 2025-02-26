@@ -2,7 +2,7 @@
 
 VirtualVoicePool::VirtualVoicePool()
 {
-	 virtualVoicesCurrent = 1;
+	 virtualVoicesCurrent = 10;
 
     for(int i = 0; i < virtualVoicesCurrent; i++)
 	    virtualVoices.push_back(new VirtualVoice);
@@ -20,7 +20,7 @@ VirtualVoice* VirtualVoicePool::getVirtualVoice()
 {
     for(int i = 0; i < virtualVoices.size(); i++)
 	{
-		std::clog << "VirtualVoicePool -> getVirtualVoice() -> size " << virtualVoices.size()<< std::endl;
+		//std::clog << "VirtualVoicePool -> getVirtualVoice() -> size " << virtualVoices.size()<< std::endl;
 		if (!virtualVoices[i]->getIsActive())
 		{
 			virtualVoicePoolIndex = i;
@@ -30,12 +30,12 @@ VirtualVoice* VirtualVoicePool::getVirtualVoice()
 		{
 			//realVoices[i]->setPlayHead(0);
 			setAllVoicesActive(true);
-			std::clog << "VirtualVoicePool -> All \"Virtual Voices\" are active." << std::endl;
+			//std::clog << "VirtualVoicePool -> All \"Virtual Voices\" are active." << std::endl;
 		}
 		if (getAllVoicesActive())
 		{
 			virtualVoices.push_back(new VirtualVoice);
-			std::clog << "VirtualVoicePool -> No Virtual Voices available. creating new Virtual Voice" << std::endl;
+			//std::clog << "VirtualVoicePool -> No Virtual Voices available. creating new Virtual Voice" << std::endl;
 		}
 	}	
 	if (!virtualVoices[virtualVoicePoolIndex]->getIsActive())

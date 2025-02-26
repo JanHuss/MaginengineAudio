@@ -14,7 +14,6 @@
 #include <vector>
 #include <iostream>
 
-
 class Leaf :
     public Component
 {
@@ -39,6 +38,9 @@ public:
 
     // low-level interface
     void adjustVolume() override;
+
+    void setCurrentVoice(VoiceBase* voice);
+    VoiceBase* getCurrentVoice();
     
 private:
     std::vector<float> audioData;
@@ -47,5 +49,7 @@ private:
     float volume;
     bool isLooping;
 
+    // think this can be removed
+    VoiceBase* currentVoice = nullptr;
 };
 

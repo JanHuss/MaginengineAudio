@@ -29,6 +29,9 @@ public:
 	void TreeStructure(Component* component);
     void TreeStructure(Component* component1, Component* component2);
 
+	void checkIfRealVoiceAvailable();
+
+
 private:
 	PlaybackDevice playbackDevice;
 
@@ -36,34 +39,31 @@ private:
 	Component* tree = new Composite;
 
 	Component* bigWave_Event = new Composite;
-	Component* bigWave_FullSound_Track = new Leaf;
+	Component* bigWave = new Leaf;
 
-	Component* laserGun_Event = new Composite;
-	Component* laserGun_Charge_Track = new Leaf;
-	Component* laserGun_Trigger_Track = new Leaf;
-	Component* laserGun_Release_Track = new Leaf;
-
-	Component* footsteps_wood_Event = new Composite;
-	Component* footsteps_wood_Track1 = new Leaf;
-	Component* footsteps_wood_Track2 = new Leaf;
-	Component* footsteps_wood_Track3 = new Leaf;
-	Component* footsteps_wood_Track4 = new Leaf;
-	Component* footsteps_wood_Track5 = new Leaf;
+	Component* trapDoor_Event = new Composite;
+	Component* trapDoor = new Leaf;
 
 	Component* smilyDay_Event = new Composite;
 	Component* smilyDay_Track = new Leaf;
+
+	Component* janVoice_Event = new Composite;
+	Component* janVoice_Track = new Leaf;
+
+	Component* thisIsMyVoice_Event = new Composite;
+	Component* thisIsMyVoice_Track = new Leaf;
 
 	// Assets
 	Asset bigWave_Asset;
 	Asset trapDoor_Asset;
 	Asset smilyDay_Asset;
+	Asset janVoice_Asset;
+	Asset thisIsMyVoice_Asset;
 
 	// Object Pool Setup
 	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
 	VirtualVoicePool* virtualVoicePool = VirtualVoicePool::getInstance();
-	//RealVoice* realVoice;
-	//RealVoice* realVoiceTwo;
-	//RealVoice* realVoiceThree;
+
 	
 };
 

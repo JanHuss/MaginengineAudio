@@ -8,12 +8,16 @@
 // Headers
 #include "miniaudio.h"
 #include "VoiceBase.h"
+#include "VirtualVoice.h"
+//#include "Component.h"
 
 // Libraries
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include <ostream>
+#include <atomic>
+#include <mutex>
 
 class RealVoice : 
     public VoiceBase
@@ -28,10 +32,11 @@ public:
     size_t getPlayHead();
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
-
+    void captureData(VirtualVoice* vVoice);
+    std::mutex dataTransferMutex;
 private:
     std::vector<float> buffer;
-    size_t playHead = 0;
+    std::atomic<size_t> playHead {0};
     bool isActive = false;
     int channels = 2;
     int pan = 0.5f;
