@@ -2,11 +2,11 @@
 
 ## Introduction
 <br>
-The Project started as an honours project which, after the first half of the 
-year, received a complete overhaul. Main reasons for this were that the engine 
+The Project started as an honours project which - after the first term - 
+received a complete overhaul. Main reasons for this were that the engine 
 structure became incredibly convoluted and tightly coupled. <br>
 After a thorough re-evaluation, I made the decision to redesign the engine.
-By considering various design patterns, the engine is now loosely coupled at most
+By considering various design patterns, the engine is now more flexible
 and easy to expand on.
 
 ## Few Things to note
