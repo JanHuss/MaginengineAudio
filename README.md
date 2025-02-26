@@ -10,9 +10,9 @@ By considering various design patterns, the engine is now loosely coupled at mos
 and easy to expand on.
 
 ## Few Things to note
-This project is a revised version of the Maginengine Audio Engine 1.0.
-This project will become an educational tool for anyone interested in Audio Engine architecture. 
-This project is still in development as of 26 Feb 2025
+- This project is a revised version of the Maginengine Audio Engine 1.0.
+- This project will become an educational tool for anyone interested in Audio Engine architecture. 
+- This project is still in development as of 26 Feb 2025
 
 ## Keywords
 
