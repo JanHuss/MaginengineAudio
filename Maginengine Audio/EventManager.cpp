@@ -81,7 +81,7 @@ void EventManager::init()
 	std::cout << "big wave - trap door - this is my voice - jan voice-" << std::endl;
 
 	std::this_thread::sleep_for(std::chrono::seconds(1));
-	bigWave->play(*realVoicePool, *virtualVoicePool);
+	//bigWave->play(*realVoicePool, *virtualVoicePool);
 	trapDoor->play(*realVoicePool, *virtualVoicePool);
 	std::this_thread::sleep_for(std::chrono::seconds(2));
 	thisIsMyVoice_Track->play(*realVoicePool, *virtualVoicePool);

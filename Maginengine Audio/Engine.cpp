@@ -2,6 +2,7 @@
 
 Engine::Engine()
 {
+	developmentState = STANDALONE;
 	init();
 }
 
@@ -34,16 +35,28 @@ int Engine::init()
 	eventManager.init();
 }
 
-void Engine::run()
+void Engine::run(float deltaTime)
 {
-	//std::cout << "Engine -> run() called()" << std::endl;
-	while(true)
+	switch (developmentState)
 	{
-		// calculating delta time
-		auto now = std::chrono::steady_clock::now();
-		deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastUpdate).count() / 1000000.0f;
-		lastUpdate = now;
-
+	case Engine::STANDALONE:
+		// This state only runs an endless while loop in order to test audio playback. It will contain a Dear IMGUI window.
+		// Needs to be able to be closed when ui is implemented and via ESCAPE key
+		while(true)
+		{
+			eventManager.update(deltaTime);
+		}
+		break;
+	case Engine::ATTACHED:
+		// This state is supposed to run the application without displaing any Audio Engine UI elements
 		eventManager.update(deltaTime);
+		break;
+	case Engine::ATTACHEDDEBUG:
+		// This state will launch a Dear IMGUI window to debug during runtime
+		break;
+	default:
+		break;
 	}
+	//std::cout << "Engine -> run() called()" << std::endl;
+	
 }

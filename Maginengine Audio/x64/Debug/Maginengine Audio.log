@@ -1,4 +1,5 @@
-﻿  EventManager.cpp
+﻿D:\Work\Programmes\GameDev\VisualStudio2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MaginengineAudio.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  EventManager.cpp
 D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.h(42,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   (compiling source file 'EventManager.cpp')
   

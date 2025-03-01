@@ -24,6 +24,7 @@
     <ProjectGuid>{0dbf4fdb-330b-4db5-998b-f017623e2bf2}</ProjectGuid>
     <RootNamespace>MaginengineAudio</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Maginengine Audio</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -132,7 +133,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Leaf.cpp" />
-    <ClCompile Include="Maginengine Audio.cpp" />
+    <ClCompile Include="MaginengineAudio.cpp" />
     <ClCompile Include="PlaybackDevice.cpp" />
     <ClCompile Include="RealVoice.cpp" />
     <ClCompile Include="RealVoicePool.cpp" />
