@@ -1,5 +1,3 @@
-# Maginengine Audio Engine
-
 # Welcome to Maginengine Audio!
 
 ## Introduction
