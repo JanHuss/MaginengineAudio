@@ -75,7 +75,7 @@ void Leaf::play()
 void Leaf::stop()
 {
     // remove track from Voice
-    std::cout << "is stopping" << std::endl;
+    std::cout << "Leaf -> Is stopping" << std::endl;
     switch (voiceType)
     {
     case REAL:
