@@ -60,3 +60,8 @@ void Engine::run(float deltaTime)
 	//std::cout << "Engine -> run() called()" << std::endl;
 	
 }
+
+EventManager& Engine::getEventManagerInstance()
+{
+	return eventManager;
+}

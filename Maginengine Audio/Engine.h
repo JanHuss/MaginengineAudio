@@ -23,6 +23,10 @@ public:
 	int init();
 	void run(float deltaTime);
 
+	// for other frameworks to access the Eventmanager class
+	// and its Composite Tree pattern.
+	EventManager& getEventManagerInstance();
+
 private:
 	PlaybackDevice playbackDevice;
 	EventManager eventManager;

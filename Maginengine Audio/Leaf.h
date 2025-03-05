@@ -51,5 +51,8 @@ private:
 
     // think this can be removed
     VoiceBase* currentVoice = nullptr;
+
+    RealVoice* realVoice = nullptr;
+    VirtualVoice* virtualVoice = nullptr;
 };
 
