@@ -67,7 +67,7 @@ void EventManager::init()
 	std::cout << "---------------------Playing Song-------------------" << std::endl;
 	std::cout << "----------------------------------------------------" << std::endl;
 	// Test runs
-	smilyDay_Track->play(*realVoicePool, *virtualVoicePool);
+	smilyDay_Track->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	//std::cout << "----------------------------------------------------" << std::endl;
 	//std::cout << "---------------------Test 01------------------------" << std::endl;
@@ -82,11 +82,11 @@ void EventManager::init()
 
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	//bigWave->play(*realVoicePool, *virtualVoicePool);
-	trapDoor->play(*realVoicePool, *virtualVoicePool);
+	trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(2));
-	thisIsMyVoice_Track->play(*realVoicePool, *virtualVoicePool);
+	thisIsMyVoice_Track->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	janVoice_Track->play(*realVoicePool, *virtualVoicePool);
+	janVoice_Track->play();
 
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
