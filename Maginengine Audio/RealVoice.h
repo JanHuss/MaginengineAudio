@@ -36,6 +36,8 @@ public:
     std::vector<float> getBuffer() override;
     void captureData(VirtualVoice* vVoice);
     //std::mutex dataTransferMutex;
+    void fadeIn(ma_uint32 elaspedFrames, ma_uint32 elapsedFadeDuration);
+    void fadeOut(int elaspedFrames, int elapsedFadeDuration);
     
     RVTRANSPORTSTATE rVTransportState = RVTRANSPORTSTATE::RVPLAY;
 
@@ -43,12 +45,14 @@ private:
     std::vector<float> buffer;
     std::atomic<size_t> playHead {0};
     size_t pausedPlayhead;
+    size_t pausedStartPlayhead;
     bool isActive = false;
     int channels = 2;
     int pan = 0.5f;
     bool isLooping = false;
     bool hasFadedIn = false;
     bool unPaused = true;
-    bool setPausedPlayhead = false;
+    bool pausedStartSet = false;
+    
 
 };

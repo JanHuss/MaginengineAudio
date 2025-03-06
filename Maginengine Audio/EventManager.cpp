@@ -86,6 +86,10 @@ void EventManager::init()
 	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	smilyDay_Track->play();
+	std::this_thread::sleep_for(std::chrono::seconds(10));
+	smilyDay_Track->pause();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->play();
 	//thisIsMyVoice_Track->play();
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	//janVoice_Track->play();
