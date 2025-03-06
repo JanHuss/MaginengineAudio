@@ -34,7 +34,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		}
 
 		// number of frames to hit the expected max/min fade
-		const ma_uint32 fadeDuration = 20000;
+		const ma_uint32 fadeDuration = 1000;
 
 		ma_uint32 i = 0;
 		for (; i < frameCount; ++i)
@@ -121,7 +121,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		// a fade out algorithm needs to be implemented here. for this the playhead needs to 
 		// play for a few more frames.
 		// if  it exceeds over the amount of frames then the playhead won't be updated anymore
-		const ma_uint32 fadeDuration = 20000;
+		const ma_uint32 fadeDuration = 1000;
 		size_t threadPlayhead = playHead.load();
 		float sampleLeft = 0.0f;
 		float sampleRight = 0.0f;
@@ -134,6 +134,8 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 
 		float elapsedSincePause = threadPlayhead - pausedStartPlayhead;
 
+		if (elapsedSincePause < fadeDuration)
+		{
 		if (!getIsActive() || buffer.empty())
 		{
 			memset(outputBuffer, 0, frameCount * channels * sizeof(float));
@@ -193,6 +195,8 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 			unPaused = false;
 
 		}
+		}
+		else
 		break;
 	}
 

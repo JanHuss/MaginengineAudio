@@ -29,6 +29,8 @@ public:
 	void setParent(Component* parent){this->_parent = parent;}
 	Component* getParent() const {return this->_parent;}
 
+	bool isPlaying = false;
+
 	// composite pattern structure
 	virtual void Add(Component* component){}
 	virtual void Remove(Component* component){}
