@@ -13,7 +13,6 @@
 
 // libraries
 #include <iostream>
-#include <chrono>
 
 class Engine
 {
@@ -22,18 +21,17 @@ public:
 	~Engine();
 
 	int init();
-	void run();
+	void run(float deltaTime);
+
+	// for other frameworks to access the Eventmanager class
+	// and its Composite Tree pattern.
+	EventManager& getEventManagerInstance();
 
 private:
-	// needs to be refactored. shouldn't be passing this through playback
-	// just for test purposes
-	//RealVoice realVoice;
-	//VirtualVoice virtualVoice;
-
 	PlaybackDevice playbackDevice;
 	EventManager eventManager;
 
-	float deltaTime;
-	std::chrono::steady_clock::time_point lastUpdate;
+	enum DEVSTATE{STANDALONE, ATTACHED, ATTACHEDDEBUG};
+	DEVSTATE developmentState;
 };
 

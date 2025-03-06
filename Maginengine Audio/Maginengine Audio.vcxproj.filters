@@ -33,7 +33,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Maginengine Audio.cpp">
+    <ClCompile Include="MaginengineAudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Composite.cpp">

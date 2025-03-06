@@ -20,6 +20,10 @@ protected:
 	std::vector<float> audioData;
 	bool isLooping = false;
 
+	// Object Pool Setup
+	RealVoicePool* realVoicePool = RealVoicePool::getInstance();
+	VirtualVoicePool* virtualVoicePool = VirtualVoicePool::getInstance();
+
 public:
 	virtual ~Component(){};
 	void setParent(Component* parent){this->_parent = parent;}
@@ -33,17 +37,18 @@ public:
 	// voice setup
 	virtual void assignAssetToTrack(std::vector<float> asset){}
 
-	virtual void assignTrackToRealVoice(RealVoicePool& realVoicePool){}
-	virtual void assignTrackToVirtualVoice(RealVoicePool& realVoicePool){}
+	virtual void assignTrackToRealVoice(){}
+	virtual void assignTrackToVirtualVoice(){}
 
-	virtual void removeTrackFromRealVoice(RealVoicePool& realVoicePool){}
+	virtual void removeTrackFromRealVoice(){}
 	virtual void removeTrackFromVirtualVoice(){}
 
 	virtual std::vector<float> getAudioData(){return audioData;}
 
 	// transport controls
-	virtual void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) = 0;
-	virtual void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) = 0;
+	virtual void play() = 0;
+	virtual void stop() = 0;
+	virtual void pause() = 0;
 
 	virtual std::string Operation() const = 0;
 

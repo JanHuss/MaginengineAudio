@@ -24,8 +24,9 @@ public:
     void Remove(Component* component) override;
     bool IsComposite() const override;
 
-    void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override {}
-    void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override {}
+    void play() override {}
+    void stop() override {}
+    void pause() override {}
 
     std::string Operation() const override;
     

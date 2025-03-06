@@ -22,17 +22,18 @@ public:
 
     void assignAssetToTrack(std::vector<float> asset);
 
-    void assignTrackToRealVoice(RealVoicePool& realVoicePool);
-    void assignTrackToVirtualVoice(VirtualVoicePool& VirtualVoicePool);
+    void assignTrackToRealVoice();
+    void assignTrackToVirtualVoice();
 
-    void removeTrackFromRealVoice(RealVoicePool& realVoicePool);
-    void removeTrackFromVirtualVoice(VirtualVoicePool& virtualVoicePool);
+    void removeTrackFromRealVoice();
+    void removeTrackFromVirtualVoice();
 
     std::vector<float> getAudioData();
 
     // high-level interface
-    void play(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
-    void stop(RealVoicePool& realVoicePool, VirtualVoicePool& virtualVoicePool) override;
+    void play() override;
+    void pause() override;
+    void stop() override;
 
     void setVolume(float vol) override;
 
@@ -51,5 +52,8 @@ private:
 
     // think this can be removed
     VoiceBase* currentVoice = nullptr;
+
+    RealVoice* realVoice = nullptr;
+    VirtualVoice* virtualVoice = nullptr;
 };
 
