@@ -32,6 +32,7 @@ public:
 
     // high-level interface
     void play() override;
+    void pause() override;
     void stop() override;
 
     void setVolume(float vol) override;

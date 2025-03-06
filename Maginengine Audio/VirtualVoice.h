@@ -17,6 +17,9 @@
 #include <ostream>
 #include <atomic>
 
+
+enum VVTRANSPORTSTATE {VVPLAY, VVPAUSE};
+
 class VirtualVoice : 
     public VoiceBase
 {
@@ -34,6 +37,9 @@ public:
 
     bool isLooping = false;
     std::atomic<size_t> playHead = 0;
+
+    // has to stay public for the Leaf class to access it
+    VVTRANSPORTSTATE vVTransportState = VVTRANSPORTSTATE::VVPLAY;
 
 private:
     //Component& trackReference;

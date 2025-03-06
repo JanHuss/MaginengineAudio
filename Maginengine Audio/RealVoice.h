@@ -19,6 +19,8 @@
 #include <atomic>
 #include <mutex>
 
+enum RVTRANSPORTSTATE {RVPLAY, RVPAUSE};
+
 class RealVoice : 
     public VoiceBase
 {
@@ -33,13 +35,20 @@ public:
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
     void captureData(VirtualVoice* vVoice);
-    std::mutex dataTransferMutex;
+    //std::mutex dataTransferMutex;
+    
+    RVTRANSPORTSTATE rVTransportState = RVTRANSPORTSTATE::RVPLAY;
+
 private:
     std::vector<float> buffer;
     std::atomic<size_t> playHead {0};
+    size_t pausedPlayhead;
     bool isActive = false;
     int channels = 2;
     int pan = 0.5f;
     bool isLooping = false;
     bool hasFadedIn = false;
+    bool unPaused = true;
+    bool setPausedPlayhead = false;
+
 };

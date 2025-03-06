@@ -26,6 +26,7 @@ public:
 
     void play() override {}
     void stop() override {}
+    void pause() override {}
 
     std::string Operation() const override;
     

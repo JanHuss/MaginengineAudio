@@ -80,11 +80,12 @@ void EventManager::init()
 	std::cout << "---------------------Test 02------------------------" << std::endl;
 	std::cout << "big wave - trap door - this is my voice - jan voice-" << std::endl;
 
-	smilyDay_Track->stop();
+	smilyDay_Track->pause();
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	//bigWave->play(*realVoicePool, *virtualVoicePool);
-	trapDoor->play();
-	std::this_thread::sleep_for(std::chrono::seconds(10));
+	//trapDoor->play();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->play();
 	//thisIsMyVoice_Track->play();
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	//janVoice_Track->play();

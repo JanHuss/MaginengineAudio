@@ -1,4 +1,7 @@
 #include "Leaf.h"
+//#include "RealVoice.h"
+//#include "VirtualVoice.h"
+
 
 std::string Leaf::Operation() const
 {
@@ -36,18 +39,22 @@ void Leaf::assignTrackToVirtualVoice()
 
 void Leaf::removeTrackFromRealVoice()
 {
-    std::cout << "Leaf -> Removing \"Real Voice\" from Track" << std::endl;
-    //RealVoice* realVoice = realVoicePool->getRealVoice();
-    realVoice->clearBuffer();
-    realVoice = nullptr;
+   if(realVoice)
+    {
+        std::cout << "Leaf -> Removing \"Real Voice\" from Track" << std::endl;
+        realVoice->clearBuffer();
+        realVoice = nullptr;
+    }
 }
 
 void Leaf::removeTrackFromVirtualVoice()
 {
-    std::cout << "Leaf -> Removing \"Virtual Voice\" from Track" << std::endl;
-    //VirtualVoice* virtualVoice = virtualVoicePool->getVirtualVoice();
-    virtualVoice->clearBuffer();
-    virtualVoice = nullptr;
+    if (virtualVoice)
+    {
+        std::cout << "Leaf -> Removing \"Virtual Voice\" from Track" << std::endl;
+        virtualVoice->clearBuffer();
+        virtualVoice = nullptr;
+    }
 }
 
 std::vector<float> Leaf::getAudioData()
@@ -61,14 +68,36 @@ void Leaf::play()
     if (!realVoicePool->getAllVoicesActive())
     {
         voiceType = REAL;
-        assignTrackToRealVoice();
+        if(!realVoice)
+            assignTrackToRealVoice();
+        realVoice->rVTransportState = RVPLAY;
         std::cout << "Leaf-> is playing real voice" << std::endl;
     }
     else
     {
         voiceType = VIRTUAL;
-        assignTrackToVirtualVoice(); // think I need to pass track reference in here as a parameter
+        if(!realVoice)
+            assignTrackToVirtualVoice();
+        virtualVoice->vVTransportState = VVPLAY;
         std::cout << "Leaf -> No \"Real Voice\" Available. Assign asset to \"Virtual Voice\" " << std::endl;
+    }
+}
+
+void Leaf::pause()
+{
+    std::clog << "Leaf -> Is pausing" << std::endl;
+    switch (voiceType)
+    {
+    case REAL:
+        // add enmum to pause state here
+        realVoice->rVTransportState = RVPAUSE; 
+        std::cout << "Leaf-> is pausing real voice" << std::endl;
+        break;
+    case VIRTUAL:
+        // add enmum to pause state here
+        virtualVoice->vVTransportState = VVPAUSE;
+        std::cout << "Leaf-> is pausing virtual voice" << std::endl;
+        break;
     }
 }
 

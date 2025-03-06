@@ -22,75 +22,109 @@ void RealVoice::clearBuffer()
 
 void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 {
-    //std::clog << "Voice -> \"processAudio()\" being called" << std::endl;
-    if (!getIsActive() || buffer.empty())
+    switch(rVTransportState)
     {
-        memset(outputBuffer, 0, frameCount * channels * sizeof(float));
-        return;
-    }
-
-    // number of frames to hit the expected max/min fade
-    const ma_uint32 fadeDuration = 256; 
-
-    ma_uint32 i = 0;
-    for (; i < frameCount; ++i)
+    case RVPLAY:
     {
-        size_t threadPlayhead = playHead.load();
-        float sampleLeft = 0.0f;
-        float sampleRight = 0.0f;
-        
-        if (threadPlayhead < buffer.size()-1)
+        //std::clog << "Voice -> \"processAudio()\" being called" << std::endl;
+        if (!getIsActive() || buffer.empty())
         {
-            if (channels == 1)
-            {
-                float sample = buffer[threadPlayhead++];
-                playHead.store(threadPlayhead);
-                sampleLeft = sample * (1.0f - pan);
-                sampleRight = sample * pan;
-                //std::clog << "RealVoice -> 1 Channel" << std::endl;
-            }
-            else if (channels == 2)
-            {
-                sampleLeft = buffer[threadPlayhead++];
-                sampleRight = buffer[threadPlayhead++];
-                playHead.store(threadPlayhead);
-                
-            }
-            
+            memset(outputBuffer, 0, frameCount * channels * sizeof(float));
+            return;
         }
-        else
+
+        // number of frames to hit the expected max/min fade
+        const ma_uint32 fadeDuration = 20000; 
+
+        ma_uint32 i = 0;
+        for (; i < frameCount; ++i)
         {
-            // Loop
-            if (isLooping)
+            size_t threadPlayhead = playHead.load();
+            float sampleLeft = 0.0f;
+            float sampleRight = 0.0f;
+        
+            if (threadPlayhead < buffer.size()-1)
             {
-                threadPlayhead = 0;
-                playHead.store(threadPlayhead);
+                if (channels == 1)
+                {
+                    float sample = buffer[threadPlayhead++];
+                    playHead.store(threadPlayhead);
+                    sampleLeft = sample * (1.0f - pan);
+                    sampleRight = sample * pan;
+                    //std::clog << "RealVoice -> 1 Channel" << std::endl;
+                }
+                else if (channels == 2)
+                {
+                    sampleLeft = buffer[threadPlayhead++];
+                    sampleRight = buffer[threadPlayhead++];
+                    playHead.store(threadPlayhead);            
+                }        
             }
-            // Stop
             else
             {
-                //setIsActive(false);
-                hasFadedIn = false;
-                clearBuffer();
-                std::cout << "Real Voice -> set Is active is false" << std::endl;
-                break;
+                // Loop
+                if (isLooping)
+                {
+                    threadPlayhead = 0;
+                    playHead.store(threadPlayhead);
+                }
+                // Stop
+                else
+                {
+                    //setIsActive(false);
+                    hasFadedIn = false;
+                    clearBuffer();
+                    std::cout << "Real Voice -> set Is active is false" << std::endl;
+                    break;
+                }
             }
+
+            // doesn't need to fade in again if is looping
+            if (threadPlayhead > fadeDuration)
+                hasFadedIn = true;
+
+            // Calculate the fade in/out
+            float fadeFactor = 1.0f;
+            if (!hasFadedIn && threadPlayhead < fadeDuration)
+                fadeFactor = (1.0f - cosf(3.14159265359 * threadPlayhead / fadeDuration)) * 0.5f;
+            else if (!isLooping && buffer.size() - threadPlayhead < fadeDuration)
+                fadeFactor = (1.0f - cosf(3.14159265359 * (buffer.size() - threadPlayhead) / fadeDuration)) * 0.5f;
+
+            if (!setPausedPlayhead)
+            {
+                pausedPlayhead = threadPlayhead;
+                setPausedPlayhead = true;
+            }
+            // fade in for unpause
+            if (!unPaused)
+            {
+                if (threadPlayhead < pausedPlayhead + fadeDuration)
+                    fadeFactor = (1.0f - cosf(3.14159265359 * threadPlayhead / fadeDuration)) * 0.5f;
+                else 
+                    unPaused = true;
+            }
+
+            // pass fade, left and right samples to output buffer
+            outputBuffer[i * 2] += sampleLeft * fadeFactor;
+            outputBuffer[i * 2 + 1] += sampleRight * fadeFactor;
         }
+        break;    
+    }
+    case RVPAUSE:
+    {
+        // a fade out algorithm needs to be implemented here. for this the playhead needs to 
+        // play for a few more frames.
+        // if  it exceeds over the amount of frames then the playhead won't be updated anymore
+        
 
-        // doesn't need to fade in again if is looping
-        if (threadPlayhead > fadeDuration)
-            hasFadedIn = true;
+        // likewise, a fade in should exist if the track is being unpaused. it will fade in
+        // until a certain threshold and then set the unpaused bool to true.
+        unPaused = false;
 
-        // Calculate the fade in/out
-        float fadeFactor = 1.0f;
-        if (!hasFadedIn && threadPlayhead < fadeDuration)
-            fadeFactor = (1.0f - cosf(3.14159265359 * threadPlayhead / fadeDuration)) * 0.5f;
-        else if (!isLooping && buffer.size() - threadPlayhead < fadeDuration)
-            fadeFactor = (1.0f - cosf(3.14159265359 * (buffer.size() - threadPlayhead) / fadeDuration)) * 0.5f;
-
-        // pass fade, left and right samples to output buffer
-        outputBuffer[i * 2] += sampleLeft * fadeFactor;
-        outputBuffer[i * 2 + 1] += sampleRight * fadeFactor;
+        break;
+    }
+    default:
+        break;
     }
 }
 
