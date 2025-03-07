@@ -1,7 +1,7 @@
 #include "RealVoice.h"
 
 
-void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
+void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop, std::function<void()> fCallback)
 {
 	//std::clog << "Voice -> audio data size in voice: " << audioData.size() << std::endl;
 	buffer = audioData;
@@ -9,6 +9,7 @@ void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop)
 	playHead.store(0);
 	setIsActive(true);
 	std::clog << "RealVoice -> Buffer size: " << buffer.size() << std::endl;
+	finishedCallback = fCallback;
 }
 
 void RealVoice::clearBuffer()
@@ -75,6 +76,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 					hasFadedIn = false;
 					clearBuffer();
 					std::cout << "Real Voice -> set Is active is false" << std::endl;
+					finishedCallback();
 					break;
 				}
 			}

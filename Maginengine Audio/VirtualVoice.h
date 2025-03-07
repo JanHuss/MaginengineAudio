@@ -24,7 +24,7 @@ class VirtualVoice :
     public VoiceBase
 {
 public:
-	void assignDataToBuffer(std::vector<float>& audioData, bool loop) override;
+	void assignDataToBuffer(std::vector<float>& audioData, bool loop, std::function<void()> fCallback) override;
     void clearBuffer() override;
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
     // has to be removed. just used for testing what the buffer is looking like in callback

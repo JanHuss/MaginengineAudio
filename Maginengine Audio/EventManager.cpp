@@ -43,7 +43,7 @@ void EventManager::init()
 	smilyDay_Event->Add(smilyDay_Track);
 	smilyDay_Asset.loadFile("assets/audio/SmileyDayToYa.wav");
 	smilyDay_Track->assignAssetToTrack(smilyDay_Asset.getAudioData());
-	smilyDay_Track->setLoop(false);
+	smilyDay_Track->setLoop(true);
 
 	tree->Add(janVoice_Event);
 	janVoice_Event->Add(janVoice_Track);
@@ -83,13 +83,17 @@ void EventManager::init()
 	smilyDay_Track->pause();
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	//bigWave->play(*realVoicePool, *virtualVoicePool);
-	//trapDoor->play();
+	trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	smilyDay_Track->play();
-	std::this_thread::sleep_for(std::chrono::seconds(10));
-	smilyDay_Track->pause();
+	trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	smilyDay_Track->play();
+	trapDoor->play();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	//smilyDay_Track->play();
+	//std::this_thread::sleep_for(std::chrono::seconds(10));
+	//smilyDay_Track->pause();
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	//smilyDay_Track->play();
 	//thisIsMyVoice_Track->play();
 	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	//janVoice_Track->play();

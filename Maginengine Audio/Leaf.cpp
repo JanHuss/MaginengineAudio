@@ -21,7 +21,8 @@ void Leaf::assignTrackToRealVoice()
     if (realVoice)
     {
         std::cout << "Leaf -> assigning Track to \"Real Voice\"" << std::endl;
-        realVoice->assignDataToBuffer(audioData, getLoop());
+        realVoice->assignDataToBuffer(audioData, getLoop(), [this](){
+           realVoice = nullptr; });
     }
 }
 
@@ -31,7 +32,8 @@ void Leaf::assignTrackToVirtualVoice()
     if (virtualVoice)
     {
         std::cout << "Leaf -> assigning Track to \"Virtual Voice\"" << std::endl;
-        virtualVoice->assignDataToBuffer(audioData, getLoop());
+        virtualVoice->assignDataToBuffer(audioData, getLoop(), [this](){
+           realVoice = nullptr; });
         // give the virtual voice a reference of the track it is directing to
        
     }

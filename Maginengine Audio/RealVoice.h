@@ -18,6 +18,7 @@
 #include <ostream>
 #include <atomic>
 #include <mutex>
+#include <functional>
 
 enum RVTRANSPORTSTATE {RVPLAY, RVPAUSE};
 
@@ -25,7 +26,7 @@ class RealVoice :
     public VoiceBase
 {
 public:
-    void assignDataToBuffer(std::vector<float>& audioData, bool loop) override;
+    void assignDataToBuffer(std::vector<float>& audioData, bool loop, std::function<void()> fCallback) override;
     void clearBuffer() override;
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
     void setIsActive(bool iActive);
@@ -53,6 +54,7 @@ private:
     bool hasFadedIn = false;
     bool unPaused = true;
     bool pausedStartSet = false;
+    std::function<void()> finishedCallback;
     
 
 };
