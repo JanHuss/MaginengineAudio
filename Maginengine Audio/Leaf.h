@@ -36,9 +36,8 @@ public:
     void stop() override;
 
     void setVolume(float vol) override;
-
-    // low-level interface
-    void adjustVolume() override;
+    void setPanning(float lp, float rp) override;
+    void setPitch(float semitones);
 
     void setCurrentVoice(VoiceBase* voice);
     VoiceBase* getCurrentVoice();
@@ -50,7 +49,7 @@ private:
     std::vector<float> audioData;
     enum VOICETYPE {REAL, VIRTUAL};
     VOICETYPE voiceType;
-    float volume;
+    //float volume;
     bool isLooping;
     bool isPlaying = false;
 

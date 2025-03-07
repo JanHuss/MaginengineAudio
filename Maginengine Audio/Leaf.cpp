@@ -128,14 +128,24 @@ void Leaf::stop()
 
 void Leaf::setVolume(float vol)
 {
-    volume = vol;
-    adjustVolume();
+    if (realVoice)
+        realVoice->adjustVolume(vol);
 }
 
-void Leaf::adjustVolume()
+void Leaf::setPanning(float lp, float rp)
 {
-    for (auto& sample : audioData)
-        sample *= volume;
+    std::clog << "Leaf -> setting panning left: \"" << lp << "\" and panning right: \"" << rp << "\"" << std::endl;
+
+    if (realVoice)
+        realVoice->adjustPan(lp, rp);
+}
+
+void Leaf::setPitch(float semitones)
+{
+    std::clog << "Leaf -> setting pitch to: \"" << semitones << "\"" << std::endl;
+
+    if (realVoice)
+        realVoice->adjustPitch(semitones);
 }
 
 void Leaf::setCurrentVoice(VoiceBase* voice)

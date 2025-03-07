@@ -26,8 +26,10 @@ public:
     virtual std::vector<float> getBuffer() = 0;
     
     virtual void captureData() {};
-    /*virtual void setTrackReference(Component& track) = 0;
-    virtual Component& getTrackReference() = 0;*/
-    //virtual void passTrackToVoice(Leaf* leaf) = 0;
+
+    virtual void adjustVolume(float vol) = 0;
+    virtual void adjustPitch(float semitones) = 0;
+    virtual void adjustPan(float lp, float rp) = 0;
+
 };
 

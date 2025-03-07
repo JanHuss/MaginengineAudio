@@ -28,7 +28,7 @@ void EventManager::init()
 	tree->Add(bigWave_Event);
 	bigWave_Event->Add(bigWave); // add a Track to an Event
 	bigWave_Asset.loadFile("assets/audio/BigWave.wav"); // Load an Audio File
-	trapDoor->setVolume(0.5f);
+	//trapDoor->setVolume(0.5f);
 	bigWave->assignAssetToTrack(bigWave_Asset.getAudioData()); 
 	bigWave->setLoop(false);
 
@@ -79,16 +79,25 @@ void EventManager::init()
 	std::cout << "----------------------------------------------------" << std::endl;
 	std::cout << "---------------------Test 02------------------------" << std::endl;
 	std::cout << "big wave - trap door - this is my voice - jan voice-" << std::endl;
-
-	smilyDay_Track->pause();
+	smilyDay_Track->setVolume(0.5f);
+	//smilyDay_Track->pause();
 	//std::this_thread::sleep_for(std::chrono::seconds(1));
 	//bigWave->play(*realVoicePool, *virtualVoicePool);
-	trapDoor->play();
+	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	trapDoor->play();
+	//trapDoor->play();
+	smilyDay_Track->setVolume(2.0f);
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	trapDoor->play();
+	smilyDay_Track->setPanning(0.2, 0.8);
+	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->setPanning(0.8, 0.2);
+	//trapDoor->play();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->setPanning(0.5, 0.5);
+	//trapDoor->play();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	smilyDay_Track->setPitch(2.0f);
 	//smilyDay_Track->play();
 	//std::this_thread::sleep_for(std::chrono::seconds(10));
 	//smilyDay_Track->pause();

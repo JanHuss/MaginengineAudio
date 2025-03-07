@@ -33,13 +33,16 @@ public:
     void setIsActive(bool iActive);
     bool getIsActive();
     void captureData() override;
-   // void passTrackToVoice(Leaf* leaf) override;
 
-    bool isLooping = false;
+    void adjustVolume(float vol) override{};
+    void adjustPitch(float semitones) override{};
+    void adjustPan(float lp, float rp) override{};
+
     std::atomic<size_t> playHead = 0;
 
     // has to stay public for the Leaf class to access it
     VVTRANSPORTSTATE vVTransportState = VVTRANSPORTSTATE::VVPLAY;
+    bool isLooping = false;
 
 private:
     //Component& trackReference;

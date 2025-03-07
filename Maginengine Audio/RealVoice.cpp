@@ -1,5 +1,14 @@
 #include "RealVoice.h"
+#include <algorithm>
+#include <cmath>
 
+
+
+RealVoice::RealVoice()
+{
+	adjustPan(0.5f,0.5f);
+	adjustPitch(0.0f);
+}
 
 void RealVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop, std::function<void()> fCallback)
 {
@@ -112,9 +121,9 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 			else
 				unPaused = true;
 
-			// pass fade, left and right samples to output buffer
-			outputBuffer[i * 2] += sampleLeft * fadeFactor;
-			outputBuffer[i * 2 + 1] += sampleRight * fadeFactor;
+			//left and right samples to output buffer multiplied by the pan settings and fade factor
+			outputBuffer[i * 2] += sampleLeft * fadeFactor * leftPanning.load();
+			outputBuffer[i * 2 + 1] += sampleRight * fadeFactor * rightPanning.load();
 		}
 		break;
 	}
@@ -190,8 +199,8 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 			else
 				fadeFactor = 0.0f;
 			// pass fade, left and right samples to output buffer
-			outputBuffer[i * 2] += sampleLeft * fadeFactor;
-			outputBuffer[i * 2 + 1] += sampleRight * fadeFactor;
+			outputBuffer[i * 2] += sampleLeft * fadeFactor * leftPanning.load();
+			outputBuffer[i * 2 + 1] += sampleRight * fadeFactor * rightPanning.load();
 			// likewise, a fade in should exist if the track is being unpaused. it will fade in
 			// until a certain threshold and then set the unpaused bool to true.
 			unPaused = false;
@@ -264,4 +273,24 @@ void RealVoice::fadeIn(ma_uint32 elaspedFrames, ma_uint32 elapsedFadeDuration)
 void RealVoice::fadeOut(int elaspedFrames, int elapsedFadeDuration)
 {
 
+}
+
+void RealVoice::adjustVolume(float vol)
+{
+	std::clog << "RealVoice -> adjusting volume to: " << vol << std::endl;
+
+	volume.store(vol);
+	for (auto& sample : buffer)
+		sample *= volume.load();
+}
+
+void RealVoice::adjustPitch(float semitones)
+{
+	pitch.store(std::powf(2.0f, semitones/12.0f));
+}
+
+void RealVoice::adjustPan(float lp, float rp)
+{
+	leftPanning.store(lp);
+	rightPanning.store(rp);
 }

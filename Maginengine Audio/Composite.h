@@ -33,7 +33,8 @@ public:
     std::string Operation() const override;
     
     void setVolume(float vol) override {}
-    void adjustVolume() override {}
+    void setPanning(float lp, float rp) override {}
+    void setPitch(float semitones) override {}
     void setIsPlaying(bool isPl) override {};
     bool getIsPlaying() override {return isPlaying;};
 };

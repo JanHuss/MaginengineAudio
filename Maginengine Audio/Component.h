@@ -53,11 +53,13 @@ public:
 	virtual std::string Operation() const = 0;
 
 	virtual void setVolume(float vol) = 0;
+	virtual void setPanning(float lp, float rp) = 0;
+	virtual void setPitch(float semitones) = 0;
 
 	virtual void setLoop(bool loop){isLooping = loop;}
 	virtual bool getLoop(){return isLooping;}
 	virtual void setIsPlaying(bool isPL) = 0;
 	virtual bool getIsPlaying() = 0;
 
-	virtual void adjustVolume() = 0;
+	//virtual void adjustVolume() = 0;
 };
