@@ -16,6 +16,8 @@
 class Composite :
     public Component
 {
+private:
+    bool isPlaying = false;
 protected:
     std::list<Component*> _children;
 
@@ -33,6 +35,6 @@ public:
     void setVolume(float vol) override {}
     void adjustVolume() override {}
     void setIsPlaying(bool isPl) override {};
-    bool getIsPlaying() override {};
+    bool getIsPlaying() override {return isPlaying;};
 };
 
