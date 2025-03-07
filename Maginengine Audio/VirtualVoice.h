@@ -46,5 +46,6 @@ private:
     std::vector<float> buffer;
     bool isActive = false;
     int channels = 2;
+    std::function<void()> finishedCallback;
 };
 

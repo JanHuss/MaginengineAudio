@@ -6,6 +6,7 @@ void VirtualVoice::assignDataToBuffer(std::vector<float>& audioData, bool loop, 
 	isLooping = loop;
 	playHead.store(0);
 	setIsActive(true);
+	finishedCallback = fCallback;
 }
 
 void VirtualVoice::clearBuffer()
@@ -46,6 +47,7 @@ void VirtualVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 				{
 					setIsActive(false);
 					std::clog << "Virtual Voice -> set Is active is false" << std::endl;
+					finishedCallback();
 					break;
 				}
 			}
