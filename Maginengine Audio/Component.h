@@ -29,8 +29,6 @@ public:
 	void setParent(Component* parent){this->_parent = parent;}
 	Component* getParent() const {return this->_parent;}
 
-	bool isPlaying = false;
-
 	// composite pattern structure
 	virtual void Add(Component* component){}
 	virtual void Remove(Component* component){}
@@ -58,6 +56,8 @@ public:
 
 	virtual void setLoop(bool loop){isLooping = loop;}
 	virtual bool getLoop(){return isLooping;}
+	virtual void setIsPlaying(bool isPL) = 0;
+	virtual bool getIsPlaying() = 0;
 
 	virtual void adjustVolume() = 0;
 };

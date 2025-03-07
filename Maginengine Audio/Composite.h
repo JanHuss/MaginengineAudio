@@ -32,5 +32,7 @@ public:
     
     void setVolume(float vol) override {}
     void adjustVolume() override {}
+    void setIsPlaying(bool isPl) override {};
+    bool getIsPlaying() override {};
 };
 

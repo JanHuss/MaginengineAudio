@@ -42,6 +42,9 @@ public:
 
     void setCurrentVoice(VoiceBase* voice);
     VoiceBase* getCurrentVoice();
+
+    void setIsPlaying(bool isPl) override;
+    bool getIsPlaying() override;
     
 private:
     std::vector<float> audioData;
@@ -49,11 +52,13 @@ private:
     VOICETYPE voiceType;
     float volume;
     bool isLooping;
+    bool isPlaying = false;
 
     // think this can be removed
     VoiceBase* currentVoice = nullptr;
 
     RealVoice* realVoice = nullptr;
     VirtualVoice* virtualVoice = nullptr;
+
 };
 
