@@ -91,13 +91,15 @@ void EventManager::init()
 	smilyDay_Track->setPanning(0.2, 0.8);
 	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	smilyDay_Track->setPanning(0.8, 0.2);
+	//smilyDay_Track->setPanning(0.8, 0.2);
+	smilyDay_Track->setPitch(-0.5f);
 	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	smilyDay_Track->setPanning(0.5, 0.5);
+	smilyDay_Track->setPitch(0.5f);
+	//smilyDay_Track->setPanning(0.5, 0.5);
 	//trapDoor->play();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
-	smilyDay_Track->setPitch(2.0f);
+	smilyDay_Track->setPitch(1.0f);
 	//smilyDay_Track->play();
 	//std::this_thread::sleep_for(std::chrono::seconds(10));
 	//smilyDay_Track->pause();

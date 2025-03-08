@@ -65,8 +65,11 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 				}
 				else if (channels == 2)
 				{
-					sampleLeft = buffer[threadPlayhead++];
-					sampleRight = buffer[threadPlayhead++];
+					float currentPitch = pitch.load();
+					sampleLeft = buffer[threadPlayhead];
+					threadPlayhead += 1 + currentPitch;
+					sampleRight = buffer[threadPlayhead];
+					threadPlayhead += 1+ currentPitch;
 					playHead.store(threadPlayhead);
 				}
 			}
@@ -286,7 +289,8 @@ void RealVoice::adjustVolume(float vol)
 
 void RealVoice::adjustPitch(float semitones)
 {
-	pitch.store(std::powf(2.0f, semitones/12.0f));
+	//pitch.store(std::powf(2.0f, semitones/12.0f));
+	pitch.store(semitones);
 }
 
 void RealVoice::adjustPan(float lp, float rp)

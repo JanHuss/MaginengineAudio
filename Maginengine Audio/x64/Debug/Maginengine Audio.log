@@ -1,12 +1,15 @@
 ﻿D:\Work\Programmes\GameDev\VisualStudio2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MaginengineAudio.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Composite.cpp
+  EventManager.cpp
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\EventManager.cpp(91,34): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\EventManager.cpp(91,29): warning C4305: 'argument': truncation from 'double' to 'float'
   RealVoice.cpp
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(100,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(102,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(118,30): warning C4244: 'initializing': conversion from 'size_t' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(120,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(146,27): warning C4244: 'initializing': conversion from 'size_t' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(198,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(294,22): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(70,26): warning C4244: '+=': conversion from 'float' to 'size_t', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(72,25): warning C4244: '+=': conversion from 'float' to 'size_t', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(103,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(105,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(121,30): warning C4244: 'initializing': conversion from 'size_t' to 'float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(123,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(149,27): warning C4244: 'initializing': conversion from 'size_t' to 'float', possible loss of data
+D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\RealVoice.cpp(201,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating Code...
   Maginengine Audio.vcxproj -> D:\UniWork\Year 04\CMP400-Honours\newMaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe
