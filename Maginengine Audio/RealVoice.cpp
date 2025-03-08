@@ -313,6 +313,11 @@ float RealVoice::interpolateSample(std::vector<float>& audioData, float index)
 	// increase the index of a container by a float value.
 	// The solution is to interpolate 2 indecis by using a fractional index value which will ultimately 
 	// decide which sample of the two should be played.
+
+	// the following code is a simple linear interpolation of two elements. it works, however the sound
+	// is producing artefacts on a slight pitch change. therefore, I believe that using a linear interpolation
+	// is the right way to go.
+
 	int i = static_cast<int>(std::floor(index));
 
 	float fractionalIndex = index - i;

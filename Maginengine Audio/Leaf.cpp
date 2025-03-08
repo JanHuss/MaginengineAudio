@@ -143,8 +143,7 @@ void Leaf::setPanning(float lp, float rp)
 void Leaf::setPitch(float semitones)
 {
     std::clog << "Leaf -> setting pitch to: \"" << semitones << "\"" << std::endl;
-    // the semitones variable does not currently set the semitones but speed of how fast a 
-    // sample is played. this will be amended to making use of semitones in the future.
+
     if (realVoice)
         realVoice->adjustPitch(semitones);
 }

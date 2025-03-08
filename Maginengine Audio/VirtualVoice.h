@@ -39,7 +39,7 @@ public:
     void adjustPitch(float semitones) override{};
     void adjustPan(float lp, float rp) override{};
 
-    std::atomic<size_t> playHead = 0;
+    std::atomic<float> playHead = 0;
 
     // has to stay public for the Leaf class to access it
     VVTRANSPORTSTATE vVTransportState = VVTRANSPORTSTATE::VVPLAY;

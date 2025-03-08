@@ -33,6 +33,7 @@ int Engine::init()
 		std::cout << "Engine -> Playback device started" << std::endl;
 
 	eventManager.init();
+	return 1;
 }
 
 void Engine::run(float deltaTime)

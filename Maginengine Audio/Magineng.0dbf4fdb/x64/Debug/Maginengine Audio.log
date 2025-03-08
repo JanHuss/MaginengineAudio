@@ -1,2 +1,12 @@
-﻿  EventManager.cpp
+﻿  Engine.cpp
+  RealVoice.cpp
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(60,42): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(107,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(109,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(127,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(169,42): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(179,40): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(180,41): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\RealVoice.cpp(207,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   Maginengine Audio.vcxproj -> D:\De Daduck (Jan)\Work\Studies\Year 4\CMP400\MaginengineAudio\Maginengine Audio\x64\Debug\Maginengine Audio.exe

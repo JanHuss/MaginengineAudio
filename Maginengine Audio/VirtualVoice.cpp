@@ -29,7 +29,7 @@ void VirtualVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		
 		for (ma_uint32 i = 0; i < frameCount; ++i)
 		{
-			size_t threadPlayhead = playHead.load();
+			float threadPlayhead = playHead.load();
 			if (threadPlayhead < buffer.size())
 			{
 				threadPlayhead++;
