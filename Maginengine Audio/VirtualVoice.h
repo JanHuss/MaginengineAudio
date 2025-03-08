@@ -34,6 +34,7 @@ public:
     bool getIsActive();
     void captureData() override;
 
+    // make sure to amend this later when it works in the real voice
     void adjustVolume(float vol) override{};
     void adjustPitch(float semitones) override{};
     void adjustPan(float lp, float rp) override{};

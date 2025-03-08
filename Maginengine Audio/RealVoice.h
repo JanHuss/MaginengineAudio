@@ -32,8 +32,8 @@ public:
     void processAudio(float* outputBuffer, ma_uint32 frameCount) override;
     void setIsActive(bool iActive);
     bool getIsActive();
-    void setPlayHead(size_t plHead);
-    size_t getPlayHead();
+    void setPlayHead(float plHead);
+    float getPlayHead();
     // has to be removed. just used for testing what the buffer is looking like in callback
     std::vector<float> getBuffer() override;
     void captureData(VirtualVoice* vVoice);
@@ -42,16 +42,17 @@ public:
     void fadeOut(int elaspedFrames, int elapsedFadeDuration);
 
      void adjustVolume(float vol) override;
-     void adjustPitch(float semitones) override;
      void adjustPan(float lp, float rp) override;
+     void adjustPitch(float semitones) override;
+
+     float interpolateSample(std::vector<float>& audioData, float index);
     
     RVTRANSPORTSTATE rVTransportState = RVTRANSPORTSTATE::RVPLAY;
 
 private:
     std::vector<float> buffer;
-    std::atomic<size_t> playHead {0};
-    size_t pausedPlayhead;
-    size_t pausedStartPlayhead;
+    float pausedPlayhead;
+    float pausedStartPlayhead;
     bool isActive = false;
     int channels = 2;
     float pan = 0.5f;
@@ -61,6 +62,7 @@ private:
     bool pausedStartSet = false;
     std::function<void()> finishedCallback;
 
+    std::atomic<float> playHead {0.0f};
     std::atomic<float> volume;
     std::atomic<float> leftPanning;
     std::atomic<float> rightPanning;

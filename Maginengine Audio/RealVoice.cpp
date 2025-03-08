@@ -49,7 +49,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		ma_uint32 i = 0;
 		for (; i < frameCount; ++i)
 		{
-			size_t threadPlayhead = playHead.load();
+			float threadPlayhead = playHead.load();
 			float sampleLeft = 0.0f;
 			float sampleRight = 0.0f;
 
@@ -66,10 +66,14 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 				else if (channels == 2)
 				{
 					float currentPitch = pitch.load();
-					sampleLeft = buffer[threadPlayhead];
-					threadPlayhead += 1 + currentPitch;
-					sampleRight = buffer[threadPlayhead];
-					threadPlayhead += 1+ currentPitch;
+
+					sampleLeft = interpolateSample(buffer, threadPlayhead);
+					//threadPlayhead++;
+					sampleRight = interpolateSample(buffer, threadPlayhead + 1);
+					//threadPlayhead++;
+					//sampleLeft = buffer[threadPlayhead];					
+					//sampleRight = buffer[threadPlayhead];
+					threadPlayhead += currentPitch * channels;
 					playHead.store(threadPlayhead);
 				}
 			}
@@ -136,7 +140,7 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 		// play for a few more frames.
 		// if  it exceeds over the amount of frames then the playhead won't be updated anymore
 		const ma_uint32 fadeDuration = 1000;
-		size_t threadPlayhead = playHead.load();
+		float threadPlayhead = playHead.load();
 		float sampleLeft = 0.0f;
 		float sampleRight = 0.0f;
 
@@ -170,6 +174,8 @@ void RealVoice::processAudio(float* outputBuffer, ma_uint32 frameCount)
 				}
 				else if (channels == 2)
 				{
+					float currentPitch = pitch.load();
+
 					sampleLeft = buffer[threadPlayhead++];
 					sampleRight = buffer[threadPlayhead++];
 					playHead.store(threadPlayhead);
@@ -231,12 +237,12 @@ bool RealVoice::getIsActive()
 	return isActive;
 }
 
-void RealVoice::setPlayHead(size_t plHead)
+void RealVoice::setPlayHead(float plHead)
 {
 	playHead = plHead;
 }
 
-size_t RealVoice::getPlayHead()
+float RealVoice::getPlayHead()
 {
 	return playHead;
 }
@@ -287,14 +293,32 @@ void RealVoice::adjustVolume(float vol)
 		sample *= volume.load();
 }
 
-void RealVoice::adjustPitch(float semitones)
-{
-	//pitch.store(std::powf(2.0f, semitones/12.0f));
-	pitch.store(semitones);
-}
 
 void RealVoice::adjustPan(float lp, float rp)
 {
 	leftPanning.store(lp);
 	rightPanning.store(rp);
+}
+
+void RealVoice::adjustPitch(float semitones)
+{
+	pitch.store(std::pow(2.0f, semitones /12.0f));
+}
+
+float RealVoice::interpolateSample(std::vector<float>& audioData, float index)
+{
+	// Changing the pitch value is, in theory, increadibly simple. you just increase the threadplayhead 
+	// by another integer and it will pitch upwards.
+	// The problem is that increasing the pitch by an integer is very restrictive. However, we cannot 
+	// increase the index of a container by a float value.
+	// The solution is to interpolate 2 indecis by using a fractional index value which will ultimately 
+	// decide which sample of the two should be played.
+	int i = static_cast<int>(std::floor(index));
+
+	float fractionalIndex = index - i;
+
+	if (i + 1 < audioData.size())
+		return audioData[i] * (1.0f - fractionalIndex) + audioData[i + 1] * fractionalIndex;
+	else
+		return audioData[i];
 }
